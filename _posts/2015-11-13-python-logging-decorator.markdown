@@ -6,7 +6,7 @@ categories: python logging debug
 ---
 
 A python decorator can be a handy way to quickly get a grasp of what is
-going on with you code. Below is a function decorator for logging when a
+going on with your code. Below is a function decorator for logging when a
 python function is called, what it has been called with, what it returned,
 or what error it has raised.
 
@@ -44,7 +44,7 @@ def add(a, b):
     return a + b
 {% endhighlight %}
 
-You will also need to setup the python logger, a simple setup to log to
+You will also need to set up the python logger, a simple setup to log to
 `stdout` would look like this:
 
 {% highlight python %}
