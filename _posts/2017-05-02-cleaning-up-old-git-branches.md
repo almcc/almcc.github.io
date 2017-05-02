@@ -37,6 +37,6 @@ I have used grep to capture the master branch and then inverted the match
 so that I get everything other than the master branch.
 
 If you find yourself in `vi` and you have decided you don't want to delete
-any branches then you could just delete al the lines (`dd` for each line),
+any branches then you could just delete all the lines (`dd` for each line),
 or you could bail out with `:cq` which will force via to exit with a non-zero
 exit code. This means that the command will not continue onto the delete step.
