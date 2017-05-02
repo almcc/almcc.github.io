@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Cleaning up old git branches
+date:   2017-05-02 15:25:00 +0100
+categories: git
 ---
 
 When you are using feature branching and constantly and merging often,
