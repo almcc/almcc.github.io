@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Python logging decorator"
-date:   2015-11-13 22:00:00 +0000
 categories: python logging debug
+comments: true
 ---
 
 A python decorator can be a handy way to quickly get a grasp of what is

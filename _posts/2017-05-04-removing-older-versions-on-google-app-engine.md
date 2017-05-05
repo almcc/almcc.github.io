@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Removing older versions on Google App Engine
+categories: gcloud
+comments: true
 ---
 
 Google App Engine holds onto older versions of your app after you push a new
