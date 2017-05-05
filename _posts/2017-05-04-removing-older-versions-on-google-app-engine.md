@@ -1,12 +1,14 @@
 ---
 layout: post
 title: Removing older versions on Google App Engine
+categories: gcloud
+comments: true
 ---
 
-Google App Engine holds onto older version of your app after you push a new
+Google App Engine holds onto older versions of your app after you push a new
 deployment, however there are limits (20) to how many you can keep. If you
-hit this limit any new pushes will fail to deploy. I wanted my Circle CI
-deployment segment to keep the last 3 versions of a service. The following
+hit this limit any new pushes will fail to deploy. I wanted my Continuous
+Deployment pipeline to keep the last 3 versions of a service. The following
 bash script will do this for me:
 
 ```bash
