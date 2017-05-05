@@ -7,7 +7,7 @@ comments: true
 
 ### envsubst
 
-I first came across envsubst [here][first-envsubst] whist doing some research. It seemed to me like neat way of keeping configuration items out of our source code. This could be applications secrets or deployment specific items. I decided to play a little further. While `envsubst` seems to be pretty common place on linux platforms, it's not on MacOS so first I had to install it for testing:
+I first came across `envsubst` [here][first-envsubst] whist doing some research. It seemed to me like neat way of keeping configuration items out of my source code. This could be application secrets or deployment specific items. I decided to play a little further. While `envsubst` seems to be pretty common place on linux platforms, it's not on MacOS so first I had to install it for testing:
 
 ```
 brew install gettext
