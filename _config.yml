@@ -17,3 +17,6 @@ exclude:
 #disqus
 disqus:
   shortname: almcc-me
+
+#google
+google_analytics: UA-98626648-1
