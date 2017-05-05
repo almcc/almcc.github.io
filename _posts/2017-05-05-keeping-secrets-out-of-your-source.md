@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Keeping secrets out of your source
+categories: continuous-delivery
+comments: true
 ---
 
 ### envsubst
