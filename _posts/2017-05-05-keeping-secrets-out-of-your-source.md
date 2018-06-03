@@ -99,5 +99,5 @@ A more involved example, however, should probably include a file.
 
 This post wasn't so much about where to keep your secrets, but more about once you have removed the things you want to remove, how do you get them back in during a continuous delivery pipeline.
 
-[first-envsubst]: https://github.com/CrunchyData/crunchy-containers/blob/master/examples/kube/statefulset/run.sh#L39
+[first-envsubst]: https://github.com/CrunchyData/crunchy-containers/blob/a9b7e21921b49e177b4b0e5769ce16ff5250ef93/examples/kube/statefulset/run.sh#L30
 [osx-install-envsubst]: http://stackoverflow.com/a/37192554
