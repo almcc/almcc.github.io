@@ -3,6 +3,9 @@ layout: post
 title: Keeping secrets out of your source
 categories: continuous-delivery
 comments: true
+excerpt: |
+  I first came across `envsubst` [here][first-envsubst] whist doing some research.
+  It seemed to me like neat way of keeping configuration items out of my source code.
 ---
 
 ### envsubst

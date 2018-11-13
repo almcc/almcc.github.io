@@ -3,6 +3,10 @@ layout: post
 title: Using pip-tool to organise python requirements
 categories: python
 comments: true
+excerpt: |
+  I have struggled for a while on how to handle my python requirements,
+  fighting on one side to pin my requirements to exact versions to have
+  repeatable builds, and on the other side to keep running the latest packages.
 ---
 
 I have struggled for a while on how to handle my python requirements,

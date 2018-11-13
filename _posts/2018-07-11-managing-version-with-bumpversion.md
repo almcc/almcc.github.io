@@ -1,8 +1,11 @@
 ---
 layout: post
 title: Managing version with bumpversion
-categories: python
+categories: python build-tools
 comments: true
+excerpt: |
+  For any software project it is likely that you're will need to define the
+  version in sperate place and keeping track of that can be a bit of pain.
 ---
 
 For any software project it is likely that you're will need to define the

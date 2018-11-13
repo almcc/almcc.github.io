@@ -3,6 +3,10 @@ layout: post
 title: Cleaning up old git branches
 categories: git
 comments: true
+excerpt: |
+  When you are using feature branching and constantly and merging often,
+  your local git tree can start to fill up with lots of old branches that
+  have been long since merged.
 ---
 
 When you are using feature branching and constantly and merging often,

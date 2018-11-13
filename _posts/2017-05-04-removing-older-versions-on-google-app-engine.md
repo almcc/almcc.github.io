@@ -3,6 +3,9 @@ layout: post
 title: Removing older versions on Google App Engine
 categories: gcloud
 comments: true
+excerpt: |
+  Google App Engine holds onto older versions of your app after you push a new
+  deployment, however there are limits (20) to how many you can keep.
 ---
 
 Google App Engine holds onto older versions of your app after you push a new

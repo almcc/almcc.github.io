@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Parsing json with Python
+categories: python json
+comments: true
+excerpt: |
+  I'm often find myself parsing deep nested json documents in python,
+  and often thought, this should be easier.
 ---
 
 I'm often find myself parsing deep nested json documents in python,

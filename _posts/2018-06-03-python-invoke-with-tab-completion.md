@@ -1,8 +1,10 @@
 ---
 layout: post
 title: Python invoke with tab completion
-categories: python
+categories: python build-tools
 comments: true
+excerpt: |
+  Python Invoke is very handy task execution tool.
 ---
 
 [Python Invoke][python-invoke] is very handy task execution tool, I use it for most of

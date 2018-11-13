@@ -3,6 +3,9 @@ layout: post
 title:  "Python logging decorator"
 categories: python logging debug
 comments: true
+excerpt: |
+  A python decorator can be a handy way to quickly get a grasp of what is
+  going on with your code.
 ---
 
 A python decorator can be a handy way to quickly get a grasp of what is
