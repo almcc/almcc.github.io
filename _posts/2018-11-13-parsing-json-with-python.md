@@ -42,7 +42,7 @@ that and I found [dpath-python][dpath-python]:
 > A python library for accessing and searching dictionaries via /slashed/paths ala xpath
 
 There is a few minor differences to my desired example but nothing
-that I can overcome. Dpath works like so:
+that I can't overcome. Dpath works like so:
 
 ```python
 
