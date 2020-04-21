@@ -5,19 +5,21 @@ title: Getting into Serverless with CDK, Lambda & DynamoDB - Part 1
 
 AWS Cloud Development Kit (CDK) is a great tool for using code to deploy resources to AWS. In a series of posts, we will cover a few of the key concepts you need to be aware of getting started with AWS and CDK. We will create a Lambda Function that returns some data from a DynamoDB table over an API Gateway.
 
-CDK allows you to define [Constructs](https://docs.aws.amazon.com/cdk/latest/guide/constructs.html) in code that map to AWS components or resources, you can then collect those Constructs together into a [Stack](https://docs.aws.amazon.com/cdk/latest/guide/stacks.html) which what we deploy to an AWS region. Finally, a Stack is defined within an [App](https://docs.aws.amazon.com/cdk/latest/guide/apps.html) which is the root of our project, it can contrail many instances of the same stack for say multiple regions or multiple different stack instances.
+CDK allows you to define [Constructs](https://docs.aws.amazon.com/cdk/latest/guide/constructs.html) in code that map to AWS components or resources, you can then collect those Constructs together into a [Stack](https://docs.aws.amazon.com/cdk/latest/guide/stacks.html) which is what we deploy to an AWS region. Finally, a Stack is defined within an [App](https://docs.aws.amazon.com/cdk/latest/guide/apps.html) which is the root of our project, it can contain many instances of the same stack for say multiple regions or multiple different stack instances.
 
 You can choose to develop CDK projects with TypeScipt, JavaScript, Python Java or C#. While initially learning CDK I went for Python as it is usually my language of choice, I have later found TypeScript to be much more comfortable as there is a wealth of examples already out there. We will use TypeScript for this post.
+
+**Note:** Many tutorials and guides on learning AWS will suggest using the web console to setup and configure resources, however, beyond simple examples I have felt uncomfortable building so much in an unrepeatable fashion. If you are someone who learns by doing, then a pattern I have found works really well is building a setup partially with CDK, then using the web console to learn and experiment further before refactoring those changes back into the CDK stack itself. Simply rinse and repeat to develop ever bigger or more bespoke setups. Having AWS best practice built into the CDK constructs is a comforting safety net.
 
 So that is already too many words, let's get started.
 
 ## Prerequisites
 
-- You have the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) installed and configured, this post was created using V1 of the CLI however both should work. The `aws configure list` command is a good way to test if you have your credentials set up correctly. For those of you who use profiles with the `--profile` flag, the `cdk` command works in the same way,
+- You have the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) installed and configured, this post was created using V1 of the CLI however both V1 and V2 should work. The `aws configure list` command is a good way to test if you have your credentials set up correctly. For those of you who use profiles with the `--profile` flag, the `cdk` command works in the same way,
 
 ## Step 1, Install the CDK CLI.
 
-Assuming you have [node](https://nodejs.org/en/) already installed, you just now need the TypeScript and the CDK CLI
+Assuming you have [node](https://nodejs.org/en/) already installed, you just now need TypeScript and the CDK CLI
 
 ```bash
 npm install -g typescript
@@ -34,19 +36,15 @@ cd myapp/
 cdk init app --language typescript
 ```
 
-And a quick test that it builds ok:
+And a quick test that it builds ok.
 
 ```bash
 npm run build
 ```
 
-A note on developing your knowledge of AWS
-
-**Note:** Many tutorials and guides on learning AWS will suggest using the web console to setup and configure resources, however, beyond simple examples I have felt uncomfortable building so much in an unrepeatable fashion. If you are someone who learns by doing, then a pattern I have found works really well is building a setup partially with CDK, then using the web console to learn and experiment further before refactoring those changes back into the CDK stack itself and a great way to learn. Simple rinse and repeat to develop ever bigger or more bespoke setups. Having AWS best practice built into the CDK constructs is a comforting safety net.
-
 ## Step 3, The Lambda Function
 
-Install the lambda package
+Install the lambda package.
 
 ```bash
 npm install @aws-cdk/aws-lambda
@@ -147,9 +145,15 @@ Now we are ready to deploy our stack.
 cdk deploy
 ```
 
-You will be asked to approve any IAM policies and statements that CDK is creating. This is also a good insight into who polices are stitched together in AWS as well as a good reminder of the heavy lifting that CDK is doing for you.
+You will be asked to approve any IAM policies and statements that CDK is creating. This is also a good insight into how policies are stitched together in AWS as well as a good reminder of the heavy lifting that CDK is doing for you.
 
-When making changes to you project and deploying again, it can be useful to chain the build command and the deploy command together to avoid deploying a stale stack without your changes and then scratching your head as to why you change didn't work. `npm run build && cdk deploy`. As I have used `&&`, `cdk deploy` will only run if the previous command (the build command) succeeds.
+When making changes to your project and deploying again, it can be useful to chain the build command and the deploy command together to avoid deploying a stale stack without your changes and then scratching your head as to why you change didn't work.
+
+```bash
+npm run build && cdk deploy
+```
+
+As I have used `&&`, `cdk deploy` will only run if the previous command (the build command) succeeds.
 
 ## Step 5, Invoking our Function
 
