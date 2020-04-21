@@ -67,7 +67,7 @@ export class MyappStack extends cdk.Stack {
 }
 ```
 
-Next we need to write some function lambda code. Create a file inside a newly create function directory (`function/index.py`). In this case, we are just going to return the last 3 winners of the Tour de France, later we will work on returning their names from a DynamoDB table.
+Next, we need to write some function lambda code. Create a file inside a newly created function directory (`function/index.py`). In this case, we are just going to return the last 3 winners of the Tour de France, later we will work on returning their names from a DynamoDB table.
 
 ```python
 import logging
