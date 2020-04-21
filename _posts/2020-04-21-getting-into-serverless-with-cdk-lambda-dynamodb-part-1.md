@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Getting into Serverless with CDK, Lambda & DynamoDB - Part 1
+categories: aws cdk
+comments: true
+excerpt: |
+  AWS Cloud Development Kit (CDK) is a great tool for using 
+  code to deploy resources to AWS.
 ---
 
 AWS Cloud Development Kit (CDK) is a great tool for using code to deploy resources to AWS. In a series of posts, we will cover a few of the key concepts you need to be aware of getting started with AWS and CDK. We will create a Lambda Function that returns some data from a DynamoDB table over an API Gateway.
