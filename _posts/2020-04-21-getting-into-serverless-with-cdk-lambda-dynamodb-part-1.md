@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Getting into Serverless with CDK, Lambda & DynamoDB - Part 1
