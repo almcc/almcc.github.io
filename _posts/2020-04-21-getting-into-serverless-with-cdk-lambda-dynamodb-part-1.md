@@ -1,3 +1,4 @@
+
 ---
 layout: post
 title: Getting into Serverless with CDK, Lambda & DynamoDB - Part 1
@@ -70,7 +71,7 @@ export class MyappStack extends cdk.Stack {
 }
 ```
 
-Next, we need to write some function lambda code. Create a file inside a newly created function directory (`function/index.py`). In this case, we are just going to return the last 3 winners of the Tour de France, later we will work on returning their names from a DynamoDB table.
+Next, we need to write some function lambda code. Create a file inside a newly created function directory (`function/index.py`). In this case, we are just going to return the top 3 finishers of the 2019 Tour de France, later we will work on returning their names from a DynamoDB table.
 
 ```python
 import logging
@@ -82,7 +83,7 @@ def main(event, context):
     logger.info("Start of function")
     return {
         "statusCode": 200,
-        "body": ["Egan Bernal", "Geraint Thomas", "Chris Froome"],
+        "body": ["Egan Bernal", "Geraint Thomas", "Steven Kruijswijk"],
         "headers": {
             "Content-Type": "application/json"
         }
@@ -178,7 +179,7 @@ aws lambda invoke --function-name MyappStack-MyFunction3BAA72D1-173G8DYDM9QA7 ou
 This will invoke our function and push the output to `out.txt` which should look like this.
 
 ```
-{"statusCode": 200, "body": ["Egan Bernal", "Geraint Thomas", "Chris Froome"], "headers": {"Content-Type": "application/json"}}
+{"statusCode": 200, "body": ["Egan Bernal", "Geraint Thomas", "Steven Kruijswijk"], "headers": {"Content-Type": "application/json"}}
 ```
 
 If you also want to see the logging output you can use the `--log-type Tail` option and it will include the LogResult in the function invocation response that was printed to the terminal.
