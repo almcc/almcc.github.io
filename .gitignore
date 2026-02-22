@@ -7,5 +7,5 @@ node_modules/
 # Local env files
 .env*.local
 
-# Build output (committed intentionally via site/)
-# site/ is NOT ignored — it is tracked in git for GitHub Pages deployment
+# Build output (committed intentionally via docs/)
+# docs/ is NOT ignored — it is tracked in git for GitHub Pages deployment

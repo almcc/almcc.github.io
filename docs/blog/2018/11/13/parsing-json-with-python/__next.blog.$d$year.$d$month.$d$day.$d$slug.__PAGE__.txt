@@ -1,10 +1,7 @@
 1:"$Sreact.fragment"
 4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
 5:"$Sreact.suspense"
-2:T1588,<h1>Parsing json with Python</h1>
-<p>Tags: json, python
-Published: November 13, 2018</p>
-<p>I'm often find myself parsing deep nested json documents in python, and often thought, this should be easier. For a structure such as:</p>
+2:T152f,<p>I'm often find myself parsing deep nested json documents in python, and often thought, this should be easier. For a structure such as:</p>
 <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"alpha"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"beta"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
@@ -62,6 +59,6 @@ KeyError: <span class="hljs-string">'/alpha/beta/delta'</span>
 <span class="hljs-literal">None</span>
 </code></pre>
 <p>Job done!</p>
-<p>One thing I could do is add a <code>quiet=True|False</code> flag to control the KeyError, as with the current setup it's not possible to tell the difference between the returned value form nested dictionary being <code>None</code> and the default reposnse being <code>None</code>.</p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Parsing json with Python"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-11-13"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","json",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"json"}],["$","span","dictionaries",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dictionaries"}],["$","span","dpath",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dpath"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+<p>One thing I could do is add a <code>quiet=True|False</code> flag to control the KeyError, as with the current setup it's not possible to tell the difference between the returned value form nested dictionary being <code>None</code> and the default reposnse being <code>None</code>.</p>0:{"buildId":"GUmJHbQ4lj4ZA3r0c7lyV","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Parsing json with Python"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-11-13"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","json",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"json"}],["$","span","dictionaries",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dictionaries"}],["$","span","dpath",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dpath"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
 3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
 6:null

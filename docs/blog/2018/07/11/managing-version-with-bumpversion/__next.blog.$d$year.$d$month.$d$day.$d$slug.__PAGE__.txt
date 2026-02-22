@@ -1,10 +1,7 @@
 1:"$Sreact.fragment"
 4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
 5:"$Sreact.suspense"
-2:Te8b,<h1>Managing version with bumpversion</h1>
-<p>Tags: bumpversion, python
-Published: July 11, 2018</p>
-<p>For any software project it is likely that you're will need to define the version in sperate place and keeping track of that can be a bit of pain. <a href="https://github.com/peritus/bumpversion">bumpversion</a> is a very handy tool to help you keep track. You can install it like so:</p>
+2:Te26,<p>For any software project it is likely that you're will need to define the version in sperate place and keeping track of that can be a bit of pain. <a href="https://github.com/peritus/bumpversion">bumpversion</a> is a very handy tool to help you keep track. You can install it like so:</p>
 <pre><code class="hljs language-css">pip install <span class="hljs-attr">--upgrade</span> bumpversion
 </code></pre>
 <p>Taking a python project for example, for me the version will be defined in <code>setup.py</code>:</p>
@@ -51,6 +48,6 @@ setup(
 <pre><code class="hljs">invoke bump-version patch
 </code></pre>
 <p>and if I'm happy and want to actually bump the version:</p>
-<p><code>invoke bump-version patch --confirm</code></p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Managing version with bumpversion"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-07-11"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","bumpversion",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"bumpversion"}],["$","span","versioning",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"versioning"}],["$","span","git",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"git"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+<p><code>invoke bump-version patch --confirm</code></p>0:{"buildId":"GUmJHbQ4lj4ZA3r0c7lyV","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Managing version with bumpversion"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-07-11"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","bumpversion",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"bumpversion"}],["$","span","versioning",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"versioning"}],["$","span","git",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"git"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
 3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
 6:null
