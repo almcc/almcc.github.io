@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && echo 'almcc.me' > docs/CNAME",
+    "build": "next build && echo 'almcc.me' > docs/CNAME && touch docs/.nojekyll",
     "start": "next start",
     "lint": "next lint"
   },
