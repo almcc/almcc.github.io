@@ -1,0 +1,148 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:T36cf,<h1>Getting into Serverless with CDK, Lambda &#x26; DynamoDB - Part 2</h1>
+<p>Tags: aws, cdk, dynamodb, lambda
+Published: May 22, 2020</p>
+<p>In this second post, we are going to add a DynamoDB Table to our stack for our lambda function to pull data from. See <a href="Getting%20into%20Serverless%20with%20CDK,%20Lambda%20&#x26;%20DynamoD%20dcfbc72d480e4c70b0ae73884c901386.md">Getting into Serverless with CDK, Lambda &#x26; DynamoDB - Part 1</a>  on getting started to get caught up.</p>
+<p>Before we go too far, you are going to need:</p>
+<ul>
+<li>Python 3.8 with Pip installed</li>
+<li><a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html">AWS SAM CLI</a></li>
+</ul>
+<h2>Step 1 - Defining the table.</h2>
+<p>Install the DynamoDB CDK module, being careful to use the same release you used before.</p>
+<pre><code class="hljs language-css">npm install <span class="hljs-keyword">@aws-cdk</span>/aws-dynamodb<span class="hljs-keyword">@1</span>.33.1
+</code></pre>
+<p>And add it to our imports in <code>lib/myapp-stack.ts</code>.</p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> dynamodb <span class="hljs-keyword">from</span> <span class="hljs-string">"@aws-cdk/aws-dynamodb"</span>;
+
+</code></pre>
+<p>Next, we can add a DynamoDB <a href="https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-dynamodb.Table.html">Table</a> construct to our stack. DynamoDB is a no-sql database and requires you to think a little bit about how your data will be accessed. Read about the key concepts over <a href="https://www.dynamodbguide.com/key-concepts/">here</a> on <a href="https://www.dynamodbguide.com/">dynamodbguide.com</a></p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">const</span> tourfinishersTable = <span class="hljs-keyword">new</span> dynamodb.<span class="hljs-title class_">Table</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">"TourFinishersTable"</span>, {
+  <span class="hljs-attr">partitionKey</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"Year"</span>, <span class="hljs-attr">type</span>: dynamodb.<span class="hljs-property">AttributeType</span>.<span class="hljs-property">NUMBER</span> },
+  <span class="hljs-attr">sortKey</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">"Position"</span>, <span class="hljs-attr">type</span>: dynamodb.<span class="hljs-property">AttributeType</span>.<span class="hljs-property">NUMBER</span> },
+  <span class="hljs-attr">tableName</span>: <span class="hljs-string">"TourFinishers"</span>,
+  <span class="hljs-attr">billingMode</span>: dynamodb.<span class="hljs-property">BillingMode</span>.<span class="hljs-property">PAY_PER_REQUEST</span>,
+  <span class="hljs-attr">removalPolicy</span>: cdk.<span class="hljs-property">RemovalPolicy</span>.<span class="hljs-property">DESTROY</span>,
+});
+</code></pre>
+<p>We have chosen in this instance to make the <code>Year</code> the primary key and <code>Position</code> the sort key, together this will be a unique value within this simple context a high cardinality. It will support our access pattern later as will.</p>
+<p>Next step is to grant our function read access to the table.</p>
+<pre><code class="hljs language-tsx">tourfinishersTable.<span class="hljs-title function_">grantReadData</span>(myFunction);
+</code></pre>
+<p>I think this is one of the most powerful features of CDK, it makes dealing with permissions so easy that you don't feel the need to grant overly permissive policies.</p>
+<h2>Step 2 - Updating out function</h2>
+<p>Our python function is going to be a little more complex than before and will require some dependencies. Therefore we first need to move it into its own <code>src</code> directory.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> <span class="hljs-keyword">function</span>/src
+<span class="hljs-built_in">mv</span> <span class="hljs-keyword">function</span>/index.py <span class="hljs-keyword">function</span>/src/
+</code></pre>
+<p>Next, we will want to add a requreiments.txt file at <code>function/src/requirements.txt</code> and add the following dependencies.</p>
+<pre><code class="hljs language-shell"><span class="hljs-meta prompt_">boto3></span><span class="bash">=1.12.43</span>
+</code></pre>
+<p>Now we will write a <code>build.sh</code> script at the base of our project to build are code bundle. AWS Lambda's require a code bundle to come pre-packaged with all its dependencies.</p>
+<pre><code class="hljs language-bash"><span class="hljs-meta">#!/bin/bash</span>
+
+<span class="hljs-built_in">mkdir</span> -p <span class="hljs-keyword">function</span>/_bundle
+pip3.8 install -r <span class="hljs-keyword">function</span>/src/requirements.txt --target <span class="hljs-keyword">function</span>/_bundle
+<span class="hljs-built_in">cp</span> -r <span class="hljs-keyword">function</span>/src/* <span class="hljs-keyword">function</span>/_bundle
+<span class="hljs-built_in">pushd</span> <span class="hljs-keyword">function</span>/_bundle
+zip -r --quiet ../bundle.zip .
+<span class="hljs-built_in">popd</span>
+<span class="hljs-built_in">rm</span> -rf <span class="hljs-keyword">function</span>/_bundle
+</code></pre>
+<p>And now we can update our code <code>function/src/index.py</code> to pull the data from dynamoDB.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> boto3
+<span class="hljs-keyword">from</span> boto3.dynamodb.conditions <span class="hljs-keyword">import</span> Key
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+dynamodb = boto3.resource(<span class="hljs-string">'dynamodb'</span>)
+table = dynamodb.Table(<span class="hljs-string">'TourFinishers'</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">event, context</span>):
+    logger.info(<span class="hljs-string">"Start of function"</span>)
+
+    response = table.query(
+        KeyConditionExpression=Key(<span class="hljs-string">'Year'</span>).eq(<span class="hljs-number">2019</span>)
+    )
+
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"statusCode"</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">"body"</span>: response[<span class="hljs-string">"Items"</span>],
+        <span class="hljs-string">"headers"</span>: {
+            <span class="hljs-string">"Content-Type"</span>: <span class="hljs-string">"application/json"</span>
+        }
+    }
+</code></pre>
+<p>Next, we run <code>./build.sh</code> to build are bundle and then we can point CDK at our code bundle by updating the <code>code</code> property of our lambda in <code>lib/myapp-stack.ts</code>.</p>
+<pre><code class="hljs language-tsx"><span class="hljs-attr">code</span>: lambda.<span class="hljs-property">Code</span>.<span class="hljs-title function_">fromAsset</span>(
+  path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">"../function/bundle.zip"</span>)
+),
+</code></pre>
+<h2>Step 3 - Deploy the changes</h2>
+<p>Simply build and deploy are changes to AWS.</p>
+<pre><code class="hljs language-arduino">npm run build
+cdk deploy
+</code></pre>
+<p>To speed things along for this demo, I have a gist that has the top 3 winners of the last 3 Tours that we can import into our table in AWS directly.</p>
+<pre><code class="hljs language-ruby">aws dynamodb batch-write-item --request-items <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/gist.githubusercontent.com/almcc</span><span class="hljs-regexp">/1437d07e5f344bb8a5b03376a9473af2/raw</span><span class="hljs-regexp">/a96c545774c5a046b8e7b32e597ded0f7a84306c/</span><span class="hljs-title class_">TourFinishers</span>.json
+</code></pre>
+<h2>Step 4 - Execute to lambda</h2>
+<p>Now to run your function in AWS we can use the AWS command.</p>
+<pre><code class="hljs language-scss">aws lambda invoke <span class="hljs-attr">--function-name</span> MyappStack-MyFunction3BAA72D1-<span class="hljs-number">1</span>H78B5LRDK3NI >(cat | jq) <span class="hljs-attr">--log-type</span> Tail | jq <span class="hljs-attr">--raw-output</span> <span class="hljs-selector-class">.LogResult</span> | base64 -d
+</code></pre>
+<p>You should see something a bit like this as the output.</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"statusCode"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"body"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"RiderNumber"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Position"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"FirstName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Egan"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"LastName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Bernal"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"TeamName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Team INEOS"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Year"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2019</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"RiderNumber"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Position"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"FirstName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Geraint"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"LastName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Thomas"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"TeamName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Team INEOS"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Year"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2019</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"RiderNumber"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">81</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Position"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"FirstName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Steven"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"LastName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Kruijswijk"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"TeamName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Team Jumbo-Visma"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"Year"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2019</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"headers"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"Content-Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"application/json"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+...
+</code></pre>
+<h2>Bonus Step - Running the function locally</h2>
+<p>You can also run the function locally with the AWS sam CLI which can be handy during development.</p>
+<p>The first thing to do is to get hold of the CloudFormation template that CDK is creating behind the scenes for us.</p>
+<pre><code class="hljs language-arduino">cdk synth --no-staging > <span class="hljs-keyword">template</span>.yaml
+</code></pre>
+<p>Now you can use the <code>sam</code> CLI to invoke your function. (Check the contents of <code>template.yaml</code> for the functions name)</p>
+<pre><code class="hljs language-lua">sam <span class="hljs-keyword">local</span> invoke MyFunction3BAA72D1 <span class="hljs-comment">--no-event | jq</span>
+</code></pre>
+<p>This will run your code locally, using your local credentials to query the live table in AWS.</p>
+<p>Then if you make any changes to you code you will need to run <code>./build.sh</code> again, if you make a change to your template, you will need to do the following.</p>
+<pre><code class="hljs language-arduino">npm run build
+cdk synth --no-staging > <span class="hljs-keyword">template</span>.yaml
+</code></pre>
+<h2>Job done!</h2>
+<p>That's it for this post, Next time we will look at adding the API gateway.</p>
+<p>If you would like to clean up everything you have created in AWS, see Step 6 - <em>Cleaning up</em> from the <a href="Getting%20into%20Serverless%20with%20CDK,%20Lambda%20&#x26;%20DynamoD%20dcfbc72d480e4c70b0ae73884c901386.md">Getting into Serverless with CDK, Lambda &#x26; DynamoDB - Part 1</a></p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Getting into Serverless with CDK, Lambda & DynamoDB - Part 2"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2020-05-22"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","aws",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"aws"}],["$","span","cdk",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"cdk"}],["$","span","dynamodb",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dynamodb"}],["$","span","lambda",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"lambda"}],["$","span","serverless",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"serverless"}],["$","span","typescript",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"typescript"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null

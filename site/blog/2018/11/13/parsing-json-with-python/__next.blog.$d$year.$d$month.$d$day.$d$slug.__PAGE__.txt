@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:T1588,<h1>Parsing json with Python</h1>
+<p>Tags: json, python
+Published: November 13, 2018</p>
+<p>I'm often find myself parsing deep nested json documents in python, and often thought, this should be easier. For a structure such as:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"alpha"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"beta"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"gamma"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>I would like to be able to do something like this:</p>
+<pre><code class="hljs language-python"><span class="hljs-meta">>>> </span><span class="hljs-keyword">import</span> json
+<span class="hljs-meta">>>> </span>doc = json.loads(<span class="hljs-string">'{"alpha": {"beta": {"gamma": 1}}}'</span>)
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'alpha.beta.gamma'</span>)
+<span class="hljs-number">1</span>
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'alpha.beta.delta'</span>)
+<span class="hljs-literal">None</span>
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'one.two.three'</span>)
+<span class="hljs-literal">None</span>
+</code></pre>
+<p>When searching for solutions, I would constantly focus on the 'json' bit, it took me longer than I would like to admit, that once I call <code>json.loads</code> I now have a python dictionary, it's no longer json. A quick google after that and I found <a href="https://github.com/akesterson/dpath-python">dpath-python</a>:</p>
+<blockquote>
+<p>A python library for accessing and searching dictionaries via /slashed/paths ala xpath</p>
+</blockquote>
+<p>There is a few minor differences to my desired example but nothing that I can't overcome. Dpath works like so:</p>
+<pre><code class="hljs language-python"><span class="hljs-meta">>>> </span><span class="hljs-keyword">import</span> json
+<span class="hljs-meta">>>> </span><span class="hljs-keyword">from</span> dpath.util <span class="hljs-keyword">import</span> get <span class="hljs-keyword">as</span> dget
+<span class="hljs-meta">>>> </span>jstring = <span class="hljs-string">'{"alpha": {"beta": {"gamma": 1}}}'</span>
+<span class="hljs-meta">>>> </span>doc = json.loads(jstring)
+<span class="hljs-meta">>>> </span>dget(doc, <span class="hljs-string">'/alpha/beta/gamma'</span>)
+<span class="hljs-number">1</span>
+<span class="hljs-meta">>>> </span>dget(doc, <span class="hljs-string">'/alpha/beta/delta'</span>)
+...
+KeyError: <span class="hljs-string">'/alpha/beta/delta'</span>
+</code></pre>
+<p>The three main differences are that it uses a <code>/</code> as the default seperator, requires a leading seperator and there is no way to provide a default in the case of key not being found. I could cope with the first two, but the last once is a deal breaker for me. So I might as well fix all three! I'd like to make it as close to a standard python dictionary workflow as possible, so I am going to create a <code>NestedDict</code> class, which will subclass <code>dict</code> and then overide <code>get</code>.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> dpath.util
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">NestedDict</span>(<span class="hljs-title class_ inherited__">dict</span>):
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">self, path, default=<span class="hljs-literal">None</span>, separator=<span class="hljs-string">'.'</span></span>):
+        <span class="hljs-keyword">if</span> path[<span class="hljs-number">0</span>] != separator:
+            path = separator + path
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">return</span> dpath.util.get(<span class="hljs-variable language_">self</span>, path, separator=separator)
+        <span class="hljs-keyword">except</span> KeyError:
+            <span class="hljs-keyword">return</span> default
+</code></pre>
+<p>As you can see, I have made the leading separator optional, defaulted it to <code>.</code> and provided a way to set a default in the case of a KeyError. The first example now becomes:</p>
+<pre><code class="hljs language-python"><span class="hljs-meta">>>> </span><span class="hljs-keyword">import</span> json
+<span class="hljs-meta">>>> </span>doc = NestedDict(json.loads(<span class="hljs-string">'{"alpha": {"beta": {"gamma": 1}}}'</span>))
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'alpha.beta.gamma'</span>)
+<span class="hljs-number">1</span>
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'alpha.beta.delta'</span>)
+<span class="hljs-literal">None</span>
+<span class="hljs-meta">>>> </span>doc.get(<span class="hljs-string">'one.two.three'</span>)
+<span class="hljs-literal">None</span>
+</code></pre>
+<p>Job done!</p>
+<p>One thing I could do is add a <code>quiet=True|False</code> flag to control the KeyError, as with the current setup it's not possible to tell the difference between the returned value form nested dictionary being <code>None</code> and the default reposnse being <code>None</code>.</p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Parsing json with Python"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-11-13"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","json",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"json"}],["$","span","dictionaries",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dictionaries"}],["$","span","dpath",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dpath"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null

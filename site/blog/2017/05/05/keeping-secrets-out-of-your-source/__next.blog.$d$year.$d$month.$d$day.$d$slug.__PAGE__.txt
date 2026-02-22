@@ -1,0 +1,81 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:T13f2,<h1>Keeping secrets out of your source</h1>
+<p>Tags: base64, envsubst, secrets
+Published: May 5, 2018</p>
+<h1>envsubst</h1>
+<p>I first came across <code>envsubst</code> <a href="https://github.com/CrunchyData/crunchy-containers/blob/a9b7e21921b49e177b4b0e5769ce16ff5250ef93/examples/kube/statefulset/run.sh#L30">here</a> whist doing some research. It seemed to me like neat way of keeping configuration items out of my source code. This could be application secrets or deployment specific items. I decided to play a little further. While <code>envsubst</code> seems to be pretty common place on linux platforms, it's not on MacOS so first I had to install it for testing:</p>
+<pre><code class="hljs language-bash">brew install gettext
+brew <span class="hljs-built_in">link</span> --force gettext
+</code></pre>
+<p>Thanks to <a href="http://stackoverflow.com/a/37192554">this</a> stack-overflow answer for the instructions.</p>
+<p>At it's heart envsubst is just infection environment variables into text streams, to test it out for yourself do the following:</p>
+<ol>
+<li>
+<p>Create an environment variable using <code>export</code> and us <code>env</code> to double check.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> EXAMPLE=alpha
+<span class="hljs-built_in">env</span> | grep EXAMPLE
+</code></pre>
+</li>
+<li>
+<p>Create an example input file, again checking it's contents.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'A simple test. EXAMPLE=${EXAMPLE}'</span> > /tmp/example-in
+<span class="hljs-built_in">cat</span> /tmp/example-in
+</code></pre>
+</li>
+<li>
+<p>Test the output of <code>envsubst</code>.</p>
+<pre><code class="hljs language-bash">envsubst &#x3C; /tmp/example-in
+</code></pre>
+</li>
+<li>
+<p>Take the output and put it into a file this time. Checking the contents and then removing the environment variable.</p>
+<pre><code class="hljs language-bash">envsubst &#x3C; /tmp/example-in > /tmp/example-out
+<span class="hljs-built_in">cat</span> /tmp/example-out
+<span class="hljs-built_in">unset</span> EXAMPLE
+</code></pre>
+</li>
+</ol>
+<p><code>envsubst</code> is very useful if you want to keep post of the file in your code repository and then just inject some values in at the last minute, for example in a continuous delivery pipeline.</p>
+<h1>base64</h1>
+<p>Making use of the <code>base64</code> command, however, can be very useful for removing whole files out of your source and into environment variables. A very simple description of base64 is that it's an encoding that use's visible characters to encode binary data. In this exampe, I use the <code>echo</code> command to pipe "alpha" into the <code>base64</code> command using and input (<code>-i -</code>) of std-in.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> -n <span class="hljs-string">"alpha"</span> | <span class="hljs-built_in">base64</span> -i -
+</code></pre>
+<p>As you can see it will return a seemingly nonsensical string, however, if we pipe it back to <code>base64</code> this time with <code>-d</code> to decode we get the original text back.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> -n <span class="hljs-string">"alpha"</span> | <span class="hljs-built_in">base64</span> -i - | <span class="hljs-built_in">base64</span> -i - -D
+</code></pre>
+<p>Note: In the examples above I use <code>-n</code> flag on the <code>echo</code> command to make sure no newline character is appended.</p>
+<p>A more involved example, however, should probably include a file.</p>
+<ol>
+<li>
+<p>Taking inspiration from my very exiting example above create a file:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'A simple test. EXAMPLE=alpha'</span> > /tmp/example
+<span class="hljs-built_in">cat</span> /tmp/example
+</code></pre>
+</li>
+<li>
+<p>Use <code>base64</code> encode the file to into an environment variable.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> EXAMPLE=$(<span class="hljs-built_in">base64</span> -i /tmp/example)
+<span class="hljs-built_in">env</span> | grep EXAMPLE
+</code></pre>
+</li>
+<li>
+<p>Use <code>base64</code> to recreate the file.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$EXAMPLE</span> | <span class="hljs-built_in">base64</span> -i - -D > /tmp/example2
+<span class="hljs-built_in">cat</span> /tmp/example2
+</code></pre>
+</li>
+<li>
+<p>(optional) You could instead decode the variable directly from your code,
+for example python.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> base64
+
+base64.b64decode(os.getenv(<span class="hljs-string">'EXAMPLE'</span>))
+</code></pre>
+</li>
+</ol>
+<p>This post wasn't so much about where to keep your secrets, but more about once you have removed the things you want to remove, how do you get them back in during a continuous delivery pipeline.</p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Keeping secrets out of your source"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2017-05-05"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","security",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"security"}],["$","span","secrets",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"secrets"}],["$","span","envsubst",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"envsubst"}],["$","span","base64",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"base64"}],["$","span","ci-cd",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"ci-cd"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null

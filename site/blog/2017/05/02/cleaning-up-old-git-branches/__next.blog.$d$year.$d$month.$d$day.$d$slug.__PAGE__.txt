@@ -1,0 +1,20 @@
+1:"$Sreact.fragment"
+3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+2:T797,<h1>Cleaning up old git branches</h1>
+<p>Tags: git
+Published: May 2, 2017</p>
+<p>When you are using feature branching and constantly and merging often, your local git tree can start to fill up with lots of old branches that have been long since merged. Deleting them can be a real chore, all thing being relative here! I found this handy tactic on <a href="http://stackoverflow.com/a/28464339">stack overflow</a>:</p>
+<pre><code class="hljs language-bash">git branch --merged **>**/tmp/merged-branches **&#x26;&#x26;** \
+vi /tmp/merged-branches **&#x26;&#x26;** \
+xargs git branch -d &#x3C;/tmp/merged-branches
+</code></pre>
+<p>What is happening here is that you listing all the branches that are already merged into the current branch and saving that to a file. Opening <code>vi</code> to allow you a chance to remove some branches from the pending deletion. Finally, we are asking git to remove those branches. I find it’s a nice balance between the ‘just do it’ mentality but also giving you and opportunity to choose what branches get deleted.</p>
+<p>It’s is quite likely though that master will be in the list of branches returned by <code>git branch --merged</code> so I have made the following alteration</p>
+<pre><code class="hljs language-bash">git branch --merged | grep -v master **>**/tmp/merged-branches **&#x26;&#x26;** \
+vi /tmp/merged-branches **&#x26;&#x26;** \
+xargs git branch -d &#x3C;/tmp/merged-branches
+</code></pre>
+<p>I have used grep to capture the master branch and then inverted the match so that I get everything other than the master branch.</p>
+<p>If you find yourself in <code>vi</code> and you have decided you don’t want to delete any branches then you could just delete all the lines (<code>dd</code> for each line), or you could bail out with <code>:cq</code> which will force via to exit with a non-zero exit code. This means that the command will not continue onto the delete step.</p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Cleaning up old git branches"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2017-05-02"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","git",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"git"}],["$","span","branches",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"branches"}],["$","span","cli",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"cli"}],["$","span","workflow",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"workflow"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null

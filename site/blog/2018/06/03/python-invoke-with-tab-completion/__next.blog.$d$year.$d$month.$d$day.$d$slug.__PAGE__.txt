@@ -1,0 +1,68 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:Tfe2,<h1>Python invoke with tab completion</h1>
+<p>Tags: invoke, python
+Published: June 3, 2018</p>
+<p><a href="http://www.pyinvoke.org/">Python Invoke</a> is very handy task execution tool, I use it for most of my projects. Before that I had been using a <code>Makefile</code> but I like that now I can use python, but still call out to a shell if I need. To create a very simple example create a <code>tasks.py</code> file at the base of your project:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> invoke <span class="hljs-keyword">import</span> task
+
+<span class="hljs-meta">@taskdef date(<span class="hljs-params">ctx</span>):</span>
+  ctx.run(<span class="hljs-string">'date'</span>)
+</code></pre>
+<p>Now install the Invoke package with <code>pip install invoke</code> and you should be able to run your example command:</p>
+<pre><code class="hljs language-bash">$ invoke <span class="hljs-built_in">date</span>
+Sun  3 Jun 2018 13:52:22 BST
+</code></pre>
+<p>A more complex example taken from the Invoke website itself looks like this:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> invoke <span class="hljs-keyword">import</span> task
+
+<span class="hljs-meta">@taskdef clean(<span class="hljs-params">c, docs=<span class="hljs-literal">False</span>, bytecode=<span class="hljs-literal">False</span>, extra=<span class="hljs-string">''</span></span>):</span>
+    patterns = [<span class="hljs-string">'build'</span>]
+    <span class="hljs-keyword">if</span> docs:
+        patterns.append(<span class="hljs-string">'docs/_build'</span>)
+    <span class="hljs-keyword">if</span> bytecode:
+        patterns.append(<span class="hljs-string">'**/*.pyc'</span>)
+    <span class="hljs-keyword">if</span> extra:
+        patterns.append(extra)
+    <span class="hljs-keyword">for</span> pattern <span class="hljs-keyword">in</span> patterns:
+        c.run(<span class="hljs-string">"rm -rf {}"</span>.<span class="hljs-built_in">format</span>(pattern))
+
+<span class="hljs-meta">@taskdef build(<span class="hljs-params">c, docs=<span class="hljs-literal">False</span></span>):</span>
+    c.run(<span class="hljs-string">"python setup.py build"</span>)
+    <span class="hljs-keyword">if</span> docs:
+        c.run(<span class="hljs-string">"sphinx-build docs docs/_build"</span>)
+</code></pre>
+<p>From the command line you can get a list of possible commands with:</p>
+<pre><code class="hljs language-bash">$ invoke --list
+Available tasks:
+
+  build
+  clean
+</code></pre>
+<p>And you can get help on a specific command like this:</p>
+<pre><code class="hljs language-bash">$ invoke clean -h
+Usage: inv[oke] [--core-opts] clean [--options] [other tasks here ...]
+
+Docstring:
+  none
+
+Options:
+  -b, --bytecode
+  -d, --docs
+  -e STRING, --extra=STRING
+</code></pre>
+<p>This can be quite cumbersome when you half know what your doing but can't quite remember the name of the command or option you need. For this instance we can enable tab completion. You can read about invoke tab completion in the <a href="http://docs.pyinvoke.org/en/1.0/invoke.html#shell-tab-completion">Invoke Documentation</a>. I use zsh with <a href="https://github.com/robbyrussell/oh-my-zsh">Oh My Zsh</a> so downloaded the the completion script to <code>~/.oh-my-zsh/invoke</code></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> ~/.oh-my-zsh/invoke
+wget https://raw.githubusercontent.com/pyinvoke/invoke/master/completion/zsh -O ~/.oh-my-zsh/invoke/zsh
+
+</code></pre>
+<p>and sourced the file in my <code>~/.zshrc</code>:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">"\nsource ~/.oh-my-zsh/invoke/zsh"</span> >> ~/.zshrc
+<span class="hljs-built_in">source</span> ~/.zshrc
+
+</code></pre>
+<p>And now we have tab completion of commands with <code>invoke &#x3C;TAB></code> and a commands options with <code>invoke &#x3C;command> -&#x3C;TAB></code>.</p>
+<p>Note, if you in a virtual environment, you might need to reactive it.</p>0:{"buildId":"GN__eK9osY2gJ5c7PwJhw","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Python invoke with tab completion"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-06-03"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","invoke",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"invoke"}],["$","span","zsh",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"zsh"}],["$","span","tab-completion",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"tab-completion"}],["$","span","cli",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"cli"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null

@@ -1,0 +1,159 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/7c92e96509cd355e.js"],""]
+3:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+4:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+:HL["/_next/static/chunks/e8b45f7239a79de5.css","style"]
+0:{"P":null,"b":"GN__eK9osY2gJ5c7PwJhw","c":["","blog","2020","04","21","getting-into-serverless-with-cdk-lambda-dynamodb-part-1"],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["year","2020","d"],{"children":[["month","04","d"],{"children":[["day","21","d"],{"children":[["slug","getting-into-serverless-with-cdk-lambda-dynamodb-part-1","d"],{"children":["__PAGE__",{}]}]}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e8b45f7239a79de5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7c92e96509cd355e.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"min-h-screen flex flex-col bg-white text-gray-900 antialiased","children":[["$","header",null,{"className":"border-b border-gray-200","children":["$","nav",null,{"className":"max-w-3xl mx-auto px-4 py-4 flex items-center gap-6","children":[["$","$L2",null,{"href":"/","className":"font-semibold text-lg hover:text-gray-600","children":"almcc.me"}],["$","$L2",null,{"href":"/blog","className":"text-gray-600 hover:text-gray-900","children":"Blog"}],["$","$L2",null,{"href":"/project","className":"text-gray-600 hover:text-gray-900","children":"Projects"}]]}]}],["$","main",null,{"className":"flex-1 max-w-3xl mx-auto w-full px-4 py-10","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"border-t border-gray-200","children":["$","div",null,{"className":"max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500","children":["© ",2026," Alastair McClelland"]}]}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+e:T45c4,<h1>Getting into Serverless with CDK, Lambda &#x26; DynamoDB - Part 1</h1>
+<p>Tags: aws, cdk, dynamodb, lambda
+Published: April 21, 2020</p>
+<p>AWS Cloud Development Kit (CDK) is a great tool for using code to deploy resources to AWS. In a series of posts, we will cover a few of the key concepts you need to be aware of getting started with AWS and CDK. We will create a Lambda Function that returns some data from a DynamoDB table over an API Gateway.</p>
+<p>CDK allows you to define <a href="https://docs.aws.amazon.com/cdk/latest/guide/constructs.html">Constructs</a> in code that map to AWS components or resources, you can then collect those Constructs together into a <a href="https://docs.aws.amazon.com/cdk/latest/guide/stacks.html">Stack</a> which is what we deploy to an AWS region. Finally, a Stack is defined within an <a href="https://docs.aws.amazon.com/cdk/latest/guide/apps.html">App</a> which is the root of our project, it can contain many instances of the same stack for say multiple regions or multiple different stack instances.</p>
+<p>You can choose to develop CDK projects with TypeScipt, JavaScript, Python Java or C#. While initially learning CDK I went for Python as it is usually my language of choice, I have later found TypeScript to be much more comfortable as there is a wealth of examples already out there. We will use TypeScript for this post.</p>
+<p><strong>Note:</strong> Many tutorials and guides on learning AWS will suggest using the web console to setup and configure resources, however, beyond simple examples I have felt uncomfortable building so much in an unrepeatable fashion. If you are someone who learns by doing, then a pattern I have found works really well is building a setup partially with CDK, then using the web console to learn and experiment further before refactoring those changes back into the CDK stack itself. Simply rinse and repeat to develop ever bigger or more bespoke setups. Having AWS best practice built into the CDK constructs is a comforting safety net.</p>
+<p>So that is already too many words, let's get started.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>You have the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS CLI</a> installed and configured, this post was created using V1 of the CLI however both V1 and V2 should work. The <code>aws configure list</code> command is a good way to test if you have your credentials set up correctly. For those of you who use profiles with the <code>-profile</code> flag, the <code>cdk</code> command works in the same way,</li>
+</ul>
+<h2>Step 1, Install the CDK CLI.</h2>
+<p>Assuming you have <a href="https://nodejs.org/en/">node</a> already installed, you just now need TypeScript and the CDK CLI</p>
+<pre><code class="hljs language-css">npm install -<span class="hljs-selector-tag">g</span> typescript
+npm install -<span class="hljs-selector-tag">g</span> aws-cdk
+</code></pre>
+<h2>Step 2, Create our project.</h2>
+<p>Let's make a directory and initialise a typescript app project.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">mkdir</span> myapp
+<span class="hljs-built_in">cd</span> myapp/
+cdk init app --language typescript
+</code></pre>
+<p>And a quick test that it builds ok.</p>
+<pre><code class="hljs language-arduino">npm run build
+</code></pre>
+<h2>Step 3, The Lambda Function</h2>
+<p>Install the lambda package.</p>
+<pre><code class="hljs language-ruby">npm install <span class="hljs-variable">@aws</span>-cdk/aws-<span class="hljs-built_in">lambda</span>
+</code></pre>
+<p>Add the dependency to our stack (<code>lib/myapp-stack.ts</code>).</p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> cdk <span class="hljs-keyword">from</span> <span class="hljs-string">"@aws-cdk/core"</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> lambda <span class="hljs-keyword">from</span> <span class="hljs-string">"@aws-cdk/aws-lambda"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyappStack</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">cdk.Stack</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">scope</span>: cdk.<span class="hljs-title class_">Construct</span>, <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">props</span>?: cdk.<span class="hljs-title class_">StackProps</span></span>) {
+    <span class="hljs-variable language_">super</span>(scope, id, props);
+
+    <span class="hljs-comment">// The code that defines your stack goes here</span>
+  }
+}
+</code></pre>
+<p>Next, we need to write some function lambda code. Create a file inside a newly created function directory (<code>function/index.py</code>). In this case, we are just going to return the top 3 finishers of the 2019 Tour de France, later we will work on returning their names from a DynamoDB table.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">import</span> logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">event, context</span>):
+    logger.info(<span class="hljs-string">"Start of function"</span>)
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">"statusCode"</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">"body"</span>: [<span class="hljs-string">"Egan Bernal"</span>, <span class="hljs-string">"Geraint Thomas"</span>, <span class="hljs-string">"Steven Kruijswijk"</span>],
+        <span class="hljs-string">"headers"</span>: {
+            <span class="hljs-string">"Content-Type"</span>: <span class="hljs-string">"application/json"</span>
+        }
+    }
+</code></pre>
+<p>Notice that I have also set up a logger with a simple logging statement, this will be useful later to demonstrate how we retrieve those logs.</p>
+<p>Now we need to define our lambda function in our stack, <a href="https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.Function.html">we can use the <code>Function</code> construct from the <code>aws-lambda</code> package.</a> Inside the <code>MyappStack</code> construct in <code>lib/myapp-stack.ts</code> add the following code.</p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-keyword">new</span> lambda.<span class="hljs-title class_">Function</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">"MyFunction"</span>, {
+  <span class="hljs-attr">runtime</span>: lambda.<span class="hljs-property">Runtime</span>.<span class="hljs-property">PYTHON_3_8</span>,
+  <span class="hljs-attr">handler</span>: <span class="hljs-string">"index.main"</span>,
+  <span class="hljs-attr">code</span>: lambda.<span class="hljs-property">Code</span>.<span class="hljs-title function_">fromAsset</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">"../function"</span>)),
+});
+</code></pre>
+<p>Don't forget to add <code>import * as path from "path";</code> as well.</p>
+<p>You can see that I have defined a function imaginatively named <code>MyFunction</code>, it uses the Python 3.8 runtime, it's handler points to <code>main</code> function inside the <code>[index.py](http://index.py)</code> module and finally, the code lives in the <code>function</code> directory which is in the parent directory to our <code>lib</code> directory.</p>
+<p>As it stands, this is enough for us to deploy our code. However, to invoke our function later we are going to need the function name that is created. CDK will take our <code>MyFunction</code> name and <a href="https://docs.aws.amazon.com/cdk/latest/guide/identifiers.html">add's to it to make sure that it's unique</a>. To extract that name of the function that will be created in AWS we can add a CloudFormation Output to our stack.</p>
+<p>Again in <code>lib/myapp-stack.ts</code> and the following code under our lambda function declaration.</p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">new</span> cdk.<span class="hljs-title class_">CfnOutput</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-string">"FunctionNameOutput"</span>, {
+  <span class="hljs-attr">value</span>: myFunction.<span class="hljs-property">functionName</span>,
+  <span class="hljs-attr">exportName</span>: <span class="hljs-string">"Lambda-Function-Name"</span>,
+});
+</code></pre>
+<p>Note here that the <code>exportName</code> is the identifier for how we will reference the value and it <strong>must</strong> be unique across your entire AWS account, regardless of the stack. You can also see the reason we defined our function to a variable.</p>
+<h2>Step 4, Build and Deploy</h2>
+<p>Let's quickly check that our project builds.</p>
+<pre><code class="hljs language-arduino">npm run build
+</code></pre>
+<p>We can also check that CDK can successfully convert (or synthesise) are code into a CloudFormation template.</p>
+<pre><code class="hljs">cdk synth
+</code></pre>
+<p>I tend to pipe the output of <code>cdk synth</code> to less as output is long and it's useful to have a way to search it.</p>
+<pre><code class="hljs">cdk synth | less
+
+</code></pre>
+<p>If all that worked then we are almost good to go. If this is the first time out have deployed a CDK project to your aws account you will need to <a href="https://docs.aws.amazon.com/cdk/latest/guide/tools.html">bootstrap you account</a>.</p>
+<pre><code class="hljs">cdk bootstrap
+</code></pre>
+<p>Now we are ready to deploy our stack.</p>
+<pre><code class="hljs">cdk deploy
+</code></pre>
+<p>You will be asked to approve any IAM policies and statements that CDK is creating. This is also a good insight into how policies are stitched together in AWS as well as a good reminder of the heavy lifting that CDK is doing for you.</p>
+<p>When making changes to your project and deploying again, it can be useful to chain the build command and the deploy command together to avoid deploying a stale stack without your changes and then scratching your head as to why you change didn't work.</p>
+<pre><code class="hljs language-arduino">npm run build &#x26;&#x26; cdk deploy
+</code></pre>
+<p>As I have used <code>&#x26;&#x26;</code>, <code>cdk deploy</code> will only run if the previous command (the build command) succeeds.</p>
+<h2>Step 5, Invoking our Function</h2>
+<p>In the output of the deploy command, you should see our CloudFormation Output. It will look a little like the following:</p>
+<pre><code class="hljs language-ini">Outputs:
+<span class="hljs-attr">MyappStack.FunctionNameOutput</span> = MyappStack-MyFunction3BAA72D1-<span class="hljs-number">173</span>G8DYDM9QA7
+
+</code></pre>
+<p>This is a function that we are now ready to invoke. We can do this with the <code>aws lambda invoke</code> command.</p>
+<pre><code class="hljs language-csharp">aws lambda invoke --function-name MyappStack-MyFunction3BAA72D1<span class="hljs-number">-173</span>G8DYDM9QA7 <span class="hljs-keyword">out</span>.txt
+</code></pre>
+<p>This will invoke our function and push the output to <code>out.txt</code> which should look like this.</p>
+<pre><code class="hljs language-css">{"statusCode": <span class="hljs-number">200</span>, <span class="hljs-string">"body"</span>: [<span class="hljs-string">"Egan Bernal"</span>, <span class="hljs-string">"Geraint Thomas"</span>, <span class="hljs-string">"Steven Kruijswijk"</span>], <span class="hljs-string">"headers"</span>: {"<span class="hljs-attribute">Content</span>-Type": <span class="hljs-string">"application/json"</span>}}
+
+</code></pre>
+<p>If you also want to see the logging output you can use the <code>--log-type Tail</code> option and it will include the LogResult in the function invocation response that was printed to the terminal.</p>
+<pre><code class="hljs language-css">aws lambda invoke <span class="hljs-attr">--function-name</span> MyappStack-MyFunction3BAA72D1-<span class="hljs-number">173</span>G8DYDM9QA7 out<span class="hljs-selector-class">.txt</span> <span class="hljs-attr">--log-type</span> Tail
+</code></pre>
+<p>Unfortunately, this will be in base64. You can paste it into your favourite base64 decoder to view the logs. For example, you could use the <code>base64</code> command.</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> &#x3C;insert-base64-content-here> | <span class="hljs-built_in">base64</span> -d
+</code></pre>
+<p>You should get some output that looks a little like this:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">START</span> RequestId: <span class="hljs-number">1</span>fc4012a<span class="hljs-number">-3963</span><span class="hljs-number">-449</span>b<span class="hljs-number">-8085</span><span class="hljs-number">-347e0</span>a12e961 Version: $LATEST
+[INFO]  <span class="hljs-number">2020</span><span class="hljs-number">-04</span><span class="hljs-number">-21</span>T05:<span class="hljs-number">47</span>:<span class="hljs-number">14.519</span>Z        <span class="hljs-number">1</span>fc4012a<span class="hljs-number">-3963</span><span class="hljs-number">-449</span>b<span class="hljs-number">-8085</span><span class="hljs-number">-347e0</span>a12e961    <span class="hljs-keyword">Start</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">function</span>
+<span class="hljs-keyword">END</span> RequestId: <span class="hljs-number">1</span>fc4012a<span class="hljs-number">-3963</span><span class="hljs-number">-449</span>b<span class="hljs-number">-8085</span><span class="hljs-number">-347e0</span>a12e961
+REPORT RequestId: <span class="hljs-number">1</span>fc4012a<span class="hljs-number">-3963</span><span class="hljs-number">-449</span>b<span class="hljs-number">-8085</span><span class="hljs-number">-347e0</span>a12e961  Duration: <span class="hljs-number">1.15</span> ms       Billed Duration: <span class="hljs-number">100</span> ms Memory Size: <span class="hljs-number">128</span> MB     Max Memory Used: <span class="hljs-number">49</span> MB
+
+</code></pre>
+<p><strong>Warning:</strong> Below I get a little sidetracked with command line tricks, if you are not a fan of the one-liner bash commands please feel free to skip ahead, otherwise make sure you have the <code>jq</code> command installed and read on!</p>
+<p>We could also use some <code>jq</code> trickery to do that on the command line with the <code>base64</code> command.</p>
+<pre><code class="hljs language-css">aws lambda invoke <span class="hljs-attr">--function-name</span> MyappStack-MyFunction3BAA72D1-<span class="hljs-number">173</span>G8DYDM9QA7 out<span class="hljs-selector-class">.txt</span> <span class="hljs-attr">--log-type</span> Tail | jq <span class="hljs-attr">--raw-output</span> <span class="hljs-selector-class">.LogResult</span> | base64 -d
+</code></pre>
+<p>While we are at it, it can be cumbersome to always be having to peek inside the <code>out.txt</code> file to see the output. We can avoid creating that file all together with the use of a process substitution that will work in most shells. We can also use <code>jq</code> again to clean up the output. We simply replace <code>out.txt</code> with <code>>(cat | jq)</code>.</p>
+<pre><code class="hljs language-scss">aws lambda invoke <span class="hljs-attr">--function-name</span> MyappStack-MyFunction3BAA72D1-<span class="hljs-number">173</span>G8DYDM9QA7 >(cat | jq) <span class="hljs-attr">--log-type</span> Tail | jq <span class="hljs-attr">--raw-output</span> <span class="hljs-selector-class">.LogResult</span> | base64 -d
+</code></pre>
+<p>You should now see the output of your lambda function printed cleanly to the terminal followed by any logging.</p>
+<p>Finally, while we are down this rabbit hole, could we pull out the function name from CloudFormation programmatically so that you can just copy and paste the command? Well, yes we could.</p>
+<pre><code class="hljs language-css">aws lambda invoke <span class="hljs-attr">--function-name</span> $(aws cloudformation list-exports <span class="hljs-attr">--query</span> 'Exports<span class="hljs-selector-attr">[?Name==`Lambda-Function-Name`]</span><span class="hljs-selector-class">.Value</span>' <span class="hljs-attr">--output</span> <span class="hljs-selector-tag">text</span>) >(cat | jq) <span class="hljs-attr">--log-type</span> Tail | jq <span class="hljs-attr">--raw-output</span> <span class="hljs-selector-class">.LogResult</span> | base64 -d
+</code></pre>
+<h2>Step 6, Cleaning up</h2>
+<p>We have covered quite a bit there already and your at the point where you can experiment further on your own. In the next post, we will look at building a DynamoDB table and querying our data.</p>
+<p>You could choose to leave your stack in place, AWS gives you 1 Million free lambda invocations per month and the S3 Bucket created by CDK will be free if your account is less than 12 months old.</p>
+<p>However, if you would like to destroy your stack you can do the following.</p>
+<pre><code class="hljs">cdk destroy
+</code></pre>
+<p>And if you would like to remove the CDKToolkit stack you will need to use the <code>aws</code> command to get the name of the cdk bucket (or use the web console)</p>
+<pre><code class="hljs language-bash">aws s3 <span class="hljs-built_in">ls</span>
+</code></pre>
+<p>You can then empty the bucket and delete the stack.</p>
+<p><code>aws s3 rm s3://cdktoolkit-stagingbucket-19rslbj9gvcos --recursive aws cloudformation delete-stack --stack-name CDKToolkit</code></p>5:["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Getting into Serverless with CDK, Lambda & DynamoDB - Part 1"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2020-04-21"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","aws",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"aws"}],["$","span","cdk",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"cdk"}],["$","span","dynamodb",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dynamodb"}],["$","span","lambda",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"lambda"}],["$","span","serverless",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"serverless"}],["$","span","typescript",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"typescript"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+c:[["$","title","0",{"children":"Getting into Serverless with CDK, Lambda & DynamoDB - Part 1 | almcc.me"}]]

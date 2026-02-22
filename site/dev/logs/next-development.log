@@ -1,0 +1,35 @@
+[00:00:00.575] Server  LOG     ✓ Ready in 429ms
+[00:00:01.126] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:11.541] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:04.044] Server  LOG     ✓ Compiled in 411ms
+[00:03:07.734] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:07.739] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:07.753] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:07.757] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:07.972] Server  ERROR   ⨯ Failed to generate static paths for /blog/[year]/[month]/[day]/[slug]:
+[00:03:07.976] Server  ERROR   ReferenceError: parseLink is not defined
+[00:03:07.976] Server  ERROR   ⨯ Failed to generate static paths for /blog/[year]/[month]/[day]/[slug]:
+[00:03:07.979] Server  ERROR   ReferenceError: parseLink is not defined
+[00:03:12.796] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:12.800] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:12.811] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:12.815] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:16.060] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:17.035] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:17.041] Server  ERROR   ⨯ ReferenceError: parseLink is not defined
+[00:03:17.171] Browser ERROR   uncaughtError: ReferenceError: parseLink is not defined
+[00:03:19.102] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:36.955] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:01.049] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:03.991] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:07.175] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:04.115] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:05.228] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:16.850] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:25.816] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:38.746] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:57.720] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:16.658] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:44.784] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:24.697] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:32.602] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

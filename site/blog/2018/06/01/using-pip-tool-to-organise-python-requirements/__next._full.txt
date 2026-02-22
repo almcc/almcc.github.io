@@ -1,0 +1,61 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/7c92e96509cd355e.js"],""]
+3:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+4:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+:HL["/_next/static/chunks/e8b45f7239a79de5.css","style"]
+0:{"P":null,"b":"GN__eK9osY2gJ5c7PwJhw","c":["","blog","2018","06","01","using-pip-tool-to-organise-python-requirements"],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["year","2018","d"],{"children":[["month","06","d"],{"children":[["day","01","d"],{"children":[["slug","using-pip-tool-to-organise-python-requirements","d"],{"children":["__PAGE__",{}]}]}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/e8b45f7239a79de5.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/7c92e96509cd355e.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"min-h-screen flex flex-col bg-white text-gray-900 antialiased","children":[["$","header",null,{"className":"border-b border-gray-200","children":["$","nav",null,{"className":"max-w-3xl mx-auto px-4 py-4 flex items-center gap-6","children":[["$","$L2",null,{"href":"/","className":"font-semibold text-lg hover:text-gray-600","children":"almcc.me"}],["$","$L2",null,{"href":"/blog","className":"text-gray-600 hover:text-gray-900","children":"Blog"}],["$","$L2",null,{"href":"/project","className":"text-gray-600 hover:text-gray-900","children":"Projects"}]]}]}],["$","main",null,{"className":"flex-1 max-w-3xl mx-auto w-full px-4 py-10","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"border-t border-gray-200","children":["$","div",null,{"className":"max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500","children":["© ",2026," Alastair McClelland"]}]}]]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+e:T1012,<h1>Using pip-tool to organise python requirements</h1>
+<p>Tags: python
+Published: June 1, 2018</p>
+<hr>
+<p>I have struggled for a while on how to handle my python requirements, fighting on one side to pin my requirements to exact versions to have repeatable builds, and on the other side to keep running the latest packages. It generally ended up as a mess.</p>
+<p>However I have just stumbled across <a href="https://github.com/jazzband/pip-tools">pip-tools</a>, it allows me to keep packages pinned to exact versions so that a single git commit builds the exact same image every time, yet at the same time offering the tools to easily update those packages to the latest ones available.</p>
+<p>To get started just create a virtual environment:</p>
+<pre><code class="hljs language-bash">python3.6 -m venv venv
+. ./venv/bin/activate
+</code></pre>
+<p>and install pip-tools with:</p>
+<pre><code class="hljs language-bash">pip install pip-tools
+</code></pre>
+<p>I like to create two requirements files, the first requirements.txt for the bare minimum to run the application, next dev-requirements.txt which includes everything else to be able to develop on the application. To use pip-tools, rather than creating <code>.txt</code> files, we create <code>.in</code> files where you list you package names, you can pin them here if you app requires a particular version, but if it doesn't just omit the version number.</p>
+<p>Create your <code>requirements.in</code> and <code>dev-requirements.in</code> files:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> Django > requirements.in
+<span class="hljs-built_in">echo</span> invoke > dev-requirements.in
+</code></pre>
+<p>Now you can use pip-compile to "compile" your <code>.in</code> files into the typical python
+requirements <code>.txt</code> files:</p>
+<pre><code class="hljs language-bash">pip-compile requirements.in
+pip-compile dev-requirements.in
+</code></pre>
+<p>And now you have fully pinned requirements files that you should commit to source control along with your <code>.in</code> files.</p>
+<p>You can of course now run <code>pip install -r requirements.txt -r dev-requirements.txt</code> however I would suggest you use <code>pip sync</code> which is part of pip-tools. It will not only install the required packages, but also remove packages not defined in your requirements files:</p>
+<pre><code class="hljs language-bash">pip-sync dev-requirements.txt requirements.txt
+</code></pre>
+<p>When you want to update your pinned packages all you need to do is run:</p>
+<pre><code class="hljs language-bash">pip-compile --upgrade requirements.in
+pip-compile --upgrade dev-requirements.in
+</code></pre>
+<p>and your <code>.txt</code> files will be update to reflect the latest packages available on <a href="https://pypi.org/">pypi</a>.</p>
+<p>I usually also have a <a href="http://www.pyinvoke.org/">Python Invoke</a> <code>tasks.py</code> file for my projects, I have added the follow two commands to help me with syncing my virtual environment and also updating my requirements.</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> invoke <span class="hljs-keyword">import</span> task
+
+<span class="hljs-meta">@task</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">sync_venv</span>(<span class="hljs-params">ctx</span>):
+    <span class="hljs-string">"""Sync the local venv with requirements."""</span>
+    ctx.run(<span class="hljs-string">'pip-sync dev-requirements.txt requirements.txt'</span>)
+
+<span class="hljs-meta">@task</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">update_requirements</span>(<span class="hljs-params">ctx</span>):
+    <span class="hljs-string">"""Update the requirements.txt files to the latest packages."""</span>
+    ctx.run(<span class="hljs-string">'pip-compile --upgrade requirements.in'</span>)
+    ctx.run(<span class="hljs-string">'pip-compile --upgrade dev-requirements.in'</span>)
+</code></pre>
+<p>Now I can be in control of when I grab new pip packages, but updating remains pretty easy.</p>5:["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Using pip-tool to organise python requirements"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2018-06-01"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","python",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"python"}],["$","span","pip-tools",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"pip-tools"}],["$","span","dependencies",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"dependencies"}],["$","span","packaging",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"packaging"}],["$","span","virtual-environment",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"virtual-environment"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+c:[["$","title","0",{"children":"Using pip-tool to organise python requirements | almcc.me"}]]
