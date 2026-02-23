@@ -6,10 +6,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: {
     template: "%s | almcc.me",
-    default: "almcc.me",
+    default: "Father, Husband and Software Engineer.",
   },
   description: "Personal site of Alastair McClelland",
   metadataBase: new URL("https://almcc.me"),
+  icons: {
+    icon: "/al.png",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +25,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
         <header className="border-b border-gray-200">
           <nav className="max-w-3xl mx-auto px-4 py-4 flex items-center">
-            <Link href="/" className="flex items-center gap-5 font-semibold text-lg hover:text-gray-600">
+            <Link href="/" className="flex items-center gap-3 font-semibold text-lg hover:text-gray-600">
               <Image src="/al.png" alt="Alastair McClelland" width={26} height={26} className="rounded-full" />
               almcc.me
             </Link>
