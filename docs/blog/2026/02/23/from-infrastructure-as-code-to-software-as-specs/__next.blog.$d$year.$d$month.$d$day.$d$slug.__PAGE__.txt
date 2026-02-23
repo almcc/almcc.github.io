@@ -1,0 +1,37 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:T1195,<p>If you've spent time with Terraform or CloudFormation, you already know the pattern: stop hand-crafting servers, define desired state, let the tool handle the rest. Code, not config files. Infrastructure as cattle. This post argues the same shift is coming for software itself — and that the specs you write today are the thing worth protecting.</p>
+<h2>Terraform Didn't Version Control the VMs</h2>
+<p>The insight behind infrastructure-as-code wasn't about tooling. It was about what's worth preserving. When provisioning becomes cheap and repeatable, you stop treating the running instance as precious. You throw it away and regenerate it.</p>
+<p>Code generation from specs is getting cheap in the same way. I've watched AI agents produce working implementations from a well-maintained set of rules and skills, reliably enough that I've started questioning something I'd never questioned before: why do I treat the code as the thing worth protecting?</p>
+<h2>What We Actually Care About</h2>
+<p>If the implementation is regenerable, the things worth protecting are:</p>
+<ul>
+<li><strong>Specifications and requirements</strong> — what the thing is supposed to do</li>
+<li><strong>Contracts and interfaces</strong> — how components talk to each other</li>
+<li><strong>Tests</strong> — the definition of correct</li>
+</ul>
+<p>The implementation becomes an artefact of the build, not a thing you maintain.</p>
+<h2>What Changes When You Think This Way</h2>
+<p>Code reviews shift from nitpicking implementation to evaluating whether the spec is right. Governance and compliance operate at the specification level — closer to where decisions actually get made.</p>
+<p>You still commit the generated code — it's versioned, reviewed, and deployed just like any other codebase. But the mindset shifts: the code becomes a build artefact you can regenerate, not the primary thing you protect. When something needs to change, you update the spec and regenerate rather than patching the implementation directly.</p>
+<p>Technical debt stops accumulating. That rushed feature built with shortcuts? Regenerate it with proper patterns. The cruft that builds up over years of patches simply disappears when you regenerate from a clean spec.</p>
+<p>Software evolves without manual refactoring. As new patterns and practices emerge, you re-run generation and pick them up. The implementation adapts; the spec stays stable.</p>
+<p>Compliance becomes reactive rather than painful. New regulation comes down, you update the spec, regenerate. No auditing hundreds of files, no scrambling to patch — the implementation just conforms to whatever rules flow from above.</p>
+<p>I'll admit I found this slightly unsettling at first. A lot of my identity as an engineer is tied up in <em>how</em> I write things, not just <em>what</em> they do.</p>
+<h2>Where the Line Between Spec and Code Blurs</h2>
+<p>We've already seen this pattern succeed with infrastructure. As AI capabilities improve, the distinction between specification and implementation keeps narrowing. Entire codebases could be regenerated with better patterns, newer languages, or optimised approaches simply by re-running generation against stable specifications. The spec and the running software start to feel like the same thing expressed at different levels of detail.</p>
+<h2>Where We Will See This Working First</h2>
+<p>This transformation won't happen overnight or uniformly across all software. We'll see it first in specific contexts where the benefits are clearest and the risks most manageable:</p>
+<ul>
+<li><strong>Small discrete tools</strong> — focused utilities with narrow scope and clear success criteria</li>
+<li><strong>Scripts and CLIs</strong> — the glue code that large orgs quietly depend on, often owned by one person</li>
+<li><strong>Small library packages</strong> — well-defined contracts, easy to validate</li>
+<li><strong>Enterprise data products</strong> — established patterns, lots of existing validation</li>
+</ul>
+<p>These all share the same property: you can write a spec that fully describes the behaviour, and you can tell when the output is wrong. As the approach proves itself in these domains, it will gradually expand to larger and more complex systems.</p>
+<h2>The Spec Is the Asset</h2>
+<p>Infrastructure engineers have learned to stop treating servers like pets. The next logical step is to stop maintaining code in the same way and start prioritising the specifications that truly matter.</p>0:{"buildId":"ecdJE_4_en-5rzRuF7bJz","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"From Infrastructure as Code to Software as Specs"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2026-02-23"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"ai"}],["$","span","infrastructure-as-code",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"infrastructure-as-code"}],["$","span","software-development",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"software-development"}],["$","span","paradigm-shift",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"paradigm-shift"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null

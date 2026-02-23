@@ -5,7 +5,7 @@ import { getAllProjects } from "@/lib/projects";
 export default function Home() {
   const posts = getAllBlogPosts()
     .sort((a, b) => b.frontmatter.date_published.localeCompare(a.frontmatter.date_published))
-    .slice(0, 3);
+    .slice(0, 7);
 
   const projects = getAllProjects().slice(0, 3);
 
@@ -13,7 +13,7 @@ export default function Home() {
     <div className="space-y-16">
       <section>
         <h1 className="text-3xl font-bold mb-2">Alastair McClelland</h1>
-        <p className="text-gray-600">Software engineer. This is my personal site.</p>
+        <p className="text-gray-600">Father, Husband and Software Engineer.</p>
       </section>
 
       <section>

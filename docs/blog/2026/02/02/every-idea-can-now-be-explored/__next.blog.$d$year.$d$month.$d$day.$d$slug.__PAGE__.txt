@@ -1,0 +1,34 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:Ta48,<p>Ideas arrive faster than you can build them. Always have. A promising thought strikes at 11pm, you make a mental note, and it joins the hundreds of others you'll never get round to exploring.</p>
+<p>Each unexplored idea felt like a missed opportunity. The frustration accumulated — all these potentially good things you <em>could</em> be doing, gathering dust.</p>
+<p>The reality is most ideas are rubbish. The trick isn't having better ideas. It's filtering faster.</p>
+<h2>AI has changed the economics</h2>
+<p>Building a prototype used to mean:</p>
+<ul>
+<li>Carving out a weekend (or three)</li>
+<li>Setting up a new project from scratch</li>
+<li>Writing enough code to see if the core concept holds</li>
+<li>Abandoning it when you hit the inevitable snag</li>
+</ul>
+<p>Now? Spin up an AI coding agent, describe what you want, and get a working prototype in an afternoon. Sometimes in an hour.</p>
+<p>The validation cycle has collapsed from weeks to hours. That changes everything.</p>
+<h2>Most ideas fail fast, and that's the point</h2>
+<p>When you can test every idea, you discover something liberating: most don't survive first contact with reality.</p>
+<p>The database schema doesn't quite work. The API you needed doesn't exist. The problem you thought you were solving turns out to be trivial. The UI that seemed obvious in your head feels clunky when you actually click through it.</p>
+<p>This isn't failure — it's efficient filtering.</p>
+<p>Before, you'd hesitate to start because the cost was too high. You'd agonise over whether an idea was worth pursuing. Now you just build it and know within hours.</p>
+<h2>The good ones reveal themselves</h2>
+<p>Here's the payoff: when you can explore every idea cheaply, the genuinely good ones become obvious.</p>
+<p>They're the prototypes you keep tinkering with after the initial build. The ones where you immediately spot the next feature. The ones you actually show people without prompting.</p>
+<p>The ideas that stick aren't necessarily the cleverest ones. They're the ones that hold up when you poke them.</p>
+<h2>What this means practically</h2>
+<p>I'm not suggesting you build every random thought that crosses your mind. But the threshold has shifted.</p>
+<p>Before: "Is this idea worth two weeks of my time?"
+Now: "Is this idea worth two hours?"</p>
+<p>That's a different calculation entirely.</p>
+<p>You can afford to be more experimental. More playful. Less precious about which ideas deserve exploration.</p>
+<p>The frustration of all those unexplored ideas? Gone. Now it's just a queue. Work through it systematically, bin the duds, develop the winners.</p>0:{"buildId":"ecdJE_4_en-5rzRuF7bJz","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Every idea can now be explored"}],["$","p",null,{"className":"text-sm text-gray-500","children":"2026-02-02"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"ai"}],["$","span","innovation",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"innovation"}],["$","span","creativity",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"creativity"}],["$","span","prototyping",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"prototyping"}],["$","span","productivity",{"className":"text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded","children":"productivity"}]]}]]}],["$","div",null,{"className":"prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null
