@@ -41,7 +41,7 @@ export default function RootLayout({
           <div className="max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500 flex items-center">
             <span>&copy; {new Date().getFullYear()} Alastair McClelland</span>
             <a
-              href="https://www.linkedin.com/in/alastair-mcclelland-55b5a319a/"
+              href="https://www.linkedin.com/in/alastair-mcclelland/"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-auto text-gray-400 hover:text-gray-600"
