@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
+import PostHogProvider from "./PostHogProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+        <PostHogProvider />
         <header className="border-b border-gray-200">
           <nav className="max-w-3xl mx-auto px-4 py-4 flex items-center">
             <Link href="/" className="flex items-center gap-3 font-semibold text-lg hover:text-gray-600">
