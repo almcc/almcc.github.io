@@ -45,19 +45,26 @@ export interface SubPage {
 
 export function getAllProjects(): Project[] {
   if (!fs.existsSync(PROJECTS_DIR)) return [];
-  const dirs = fs
-    .readdirSync(PROJECTS_DIR, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
-    .map((d) => d.name);
+  const entries = fs.readdirSync(PROJECTS_DIR, { withFileTypes: true });
 
-  return dirs
-    .map((slug) => {
-      const indexPath = path.join(PROJECTS_DIR, slug, "index.md");
+  const projects: Project[] = [];
+
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const indexPath = path.join(PROJECTS_DIR, entry.name, "index.md");
+      if (!fs.existsSync(indexPath)) continue;
       const raw = fs.readFileSync(indexPath, "utf-8");
       const { data, content } = matter(raw);
-      return { slug, frontmatter: data as ProjectFrontmatter, content };
-    })
-    .filter(({ frontmatter }) => frontmatter.status === "published");
+      projects.push({ slug: entry.name, frontmatter: data as ProjectFrontmatter, content });
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
+      const slug = entry.name.replace(/\.md$/, "");
+      const raw = fs.readFileSync(path.join(PROJECTS_DIR, entry.name), "utf-8");
+      const { data, content } = matter(raw);
+      projects.push({ slug, frontmatter: data as ProjectFrontmatter, content });
+    }
+  }
+
+  return projects.filter(({ frontmatter }) => frontmatter.status === "published");
 }
 
 function getSubPageMetas(projectSlug: string): SubPageMeta[] {
@@ -75,13 +82,26 @@ function getSubPageMetas(projectSlug: string): SubPageMeta[] {
 
 export async function getProject(slug: string): Promise<ProjectWithHtml | null> {
   const indexPath = path.join(PROJECTS_DIR, slug, "index.md");
-  if (!fs.existsSync(indexPath)) return null;
+  const flatPath = path.join(PROJECTS_DIR, `${slug}.md`);
 
-  const raw = fs.readFileSync(indexPath, "utf-8");
+  let filePath: string;
+  let isFlat: boolean;
+
+  if (fs.existsSync(indexPath)) {
+    filePath = indexPath;
+    isFlat = false;
+  } else if (fs.existsSync(flatPath)) {
+    filePath = flatPath;
+    isFlat = true;
+  } else {
+    return null;
+  }
+
+  const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   const processed = await remark().use(remarkHtml).process(content);
   const contentHtml = processed.toString();
-  const subPages = getSubPageMetas(slug);
+  const subPages = isFlat ? [] : getSubPageMetas(slug);
 
   return { slug, frontmatter: data as ProjectFrontmatter, content, contentHtml, subPages };
 }
@@ -116,6 +136,9 @@ export function getAllSubPageParams(): { projectSlug: string; subPageSlug: strin
 
   const params: { projectSlug: string; subPageSlug: string }[] = [];
   for (const projectSlug of dirs) {
+    // Only directory-based projects can have sub-pages
+    const indexPath = path.join(PROJECTS_DIR, projectSlug, "index.md");
+    if (!fs.existsSync(indexPath)) continue;
     const metas = getSubPageMetas(projectSlug);
     for (const meta of metas) {
       params.push({ projectSlug, subPageSlug: meta.slug });
