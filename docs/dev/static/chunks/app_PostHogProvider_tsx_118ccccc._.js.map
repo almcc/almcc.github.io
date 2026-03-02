@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/al/Code/almcc.github.io/app/PostHogProvider.tsx"],"sourcesContent":["'use client'\n\nimport posthog from 'posthog-js'\nimport { useEffect } from 'react'\n\nexport default function PostHogProvider() {\n  useEffect(() => {\n    posthog.init('phc_CH1FLSiQOl0gZyR2LEesPz6H42CCM95H0lA4ljB761X', {\n      api_host: 'https://a.almcc.me',\n      defaults: '2026-01-30',\n    })\n  }, [])\n\n  return null\n}\n"],"names":[],"mappings":";;;;AAEA;AACA;;AAHA;;;AAKe,SAAS;;IACtB,IAAA,0KAAS;qCAAC;YACR,6JAAO,CAAC,IAAI,CAAC,mDAAmD;gBAC9D,UAAU;gBACV,UAAU;YACZ;QACF;oCAAG,EAAE;IAEL,OAAO;AACT;GATwB;KAAA"}}]
-}
