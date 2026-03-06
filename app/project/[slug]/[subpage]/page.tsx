@@ -38,16 +38,16 @@ export default async function ProjectSubPage({ params }: { params: Promise<Param
 
   return (
     <article>
-      <nav className="text-sm text-gray-500 mb-6">
-        <Link href="/project" className="hover:text-gray-900">
+      <nav className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        <Link href="/project" className="hover:text-gray-900 dark:hover:text-gray-100">
           Projects
         </Link>
         {" / "}
-        <Link href={`/project/${slug}`} className="hover:text-gray-900">
+        <Link href={`/project/${slug}`} className="hover:text-gray-900 dark:hover:text-gray-100">
           {project.frontmatter.title}
         </Link>
         {" / "}
-        <span className="text-gray-700">{sub.frontmatter.title}</span>
+        <span className="text-gray-700 dark:text-gray-300">{sub.frontmatter.title}</span>
       </nav>
 
       <header className="mb-8">
@@ -55,12 +55,12 @@ export default async function ProjectSubPage({ params }: { params: Promise<Param
       </header>
 
       <div
-        className="prose prose-gray max-w-none"
+        className="prose prose-gray dark:prose-invert max-w-none"
         dangerouslySetInnerHTML={{ __html: sub.contentHtml }}
       />
 
-      <div className="mt-10 border-t border-gray-200 pt-6">
-        <Link href={`/project/${slug}`} className="text-sm text-gray-500 hover:text-gray-900">
+      <div className="mt-10 border-t border-gray-200 dark:border-gray-800 pt-6">
+        <Link href={`/project/${slug}`} className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
           &larr; Back to {project.frontmatter.title}
         </Link>
       </div>

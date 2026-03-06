@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
 import PostHogProvider from "./PostHogProvider";
+import ThemeToggle from "./ThemeToggle";
 
 export const metadata: Metadata = {
   title: {
@@ -22,34 +23,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Inline script runs before first paint to avoid flash of wrong theme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased">
         <PostHogProvider />
-        <header className="border-b border-gray-200">
+        <header className="border-b border-gray-200 dark:border-gray-800">
           <nav className="max-w-3xl mx-auto px-4 py-4 flex items-center">
-            <Link href="/" className="flex items-center gap-3 font-semibold text-lg hover:text-gray-600">
+            <Link href="/" className="flex items-center gap-3 font-semibold text-lg hover:text-gray-600 dark:hover:text-gray-300">
               <Image src="/al.png" alt="Alastair McClelland" width={26} height={26} className="rounded-full" />
               almcc.me
             </Link>
             <div className="ml-auto flex items-center gap-6">
-              <Link href="/blog" className="text-gray-600 hover:text-gray-900">
+              <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
                 Blog
               </Link>
-              <Link href="/project" className="text-gray-600 hover:text-gray-900">
+              <Link href="/project" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
                 Projects
               </Link>
+              <ThemeToggle />
             </div>
           </nav>
         </header>
         <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-10">{children}</main>
-        <footer className="border-t border-gray-200">
-          <div className="max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500 flex items-center">
+        <footer className="border-t border-gray-200 dark:border-gray-800">
+          <div className="max-w-3xl mx-auto px-4 py-6 text-sm text-gray-500 dark:text-gray-400 flex items-center">
             <span>&copy; {new Date().getFullYear()} Alastair McClelland</span>
             <a
               href="https://www.linkedin.com/in/alastair-mcclelland/"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto text-gray-400 hover:text-gray-600"
+              className="ml-auto text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
               aria-label="LinkedIn"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
