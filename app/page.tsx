@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getAllBlogPosts } from "@/lib/blog";
 import { getAllProjects } from "@/lib/projects";
 
@@ -13,7 +14,8 @@ export default function Home() {
     <div className="space-y-16">
       <section>
         <h1 className="text-3xl font-bold mb-2">Alastair McClelland</h1>
-        <p className="text-gray-600">Father, Husband and Software Engineer.</p>
+        <p className="text-gray-600 mb-10">Father, Husband and Software Engineer.</p>
+        <Image src="/banner.jpg" alt="" width={768} height={0} className="w-full h-auto" />
       </section>
 
       <section>
