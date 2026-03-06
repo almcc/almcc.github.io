@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { existsSync } from "fs";
+import { join } from "path";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getAllBlogPosts, getBlogPost } from "@/lib/blog";
 
 export const dynamicParams = false;
@@ -40,6 +43,9 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
 
   if (!post) notFound();
 
+  const bannerPath = `/posts/${slug}.png`;
+  const bannerExists = existsSync(join(process.cwd(), "public", "posts", `${slug}.png`));
+
   return (
     <article>
       <header className="mb-8">
@@ -58,6 +64,16 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
           </div>
         )}
       </header>
+      {bannerExists && (
+        <div className="w-full h-64 relative rounded-lg overflow-hidden mb-8">
+          <Image
+            src={bannerPath}
+            alt={post.frontmatter.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
       <div
         className="prose prose-gray max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
