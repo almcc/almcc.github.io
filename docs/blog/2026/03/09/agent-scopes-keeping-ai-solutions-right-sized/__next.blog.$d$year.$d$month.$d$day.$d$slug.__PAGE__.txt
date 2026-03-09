@@ -1,0 +1,106 @@
+1:"$Sreact.fragment"
+2:I[5500,["/_next/static/chunks/663fb8f73a003508.js","/_next/static/chunks/edb6766dacaac0cd.js"],"Image"]
+5:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+3:T2a6e,<p>You send an AI agent off to add a feature. You come back to find it's rewritten half the codebase and overcomplicated the solution beyond recognition. How often has this happened to you?</p>
+<p>The problem is scope creep without guardrails. Agents optimise for completion, not constraint. They add features, rewrite patterns, refactor code "for consistency" — all in service of the task, but none of it authorised. We need a way to define boundaries that agents understand and respect.</p>
+<h2>Borrowing from OAuth</h2>
+<p>OAuth scopes define boundaries — what an access token can do, which resources it can touch, what operations it can perform. The principle of least privilege keeps tokens constrained to what they need and nothing more.</p>
+<p>What if we applied the same concept to AI agents?</p>
+<p>In OAuth, authorisation is absolute. With AI agents, instructions aren't guarantees — there's no compiler preventing an agent from rewriting your database layer. But what if we established scopes anyway? Define expected changes. Set boundaries. Give the agent a framework for working within constraints and a mechanism for flagging when it hits a wall. Scopes might not enforce compliance, but they could signal intent. Once complete, they'd provide a baseline for evaluating whether the agent stayed roughly within bounds or wandered off on its own tangent.</p>
+<h2>Designed scope versus agent scope</h2>
+<p>Consider a to-do app API with <code>PATCH /v1/tasks/{taskId}</code> for updating task fields — title, dueDate, notes. You need to add the ability to mark tasks as complete. This is a genuine 50-50 decision:</p>
+<ul>
+<li><strong>Option A</strong>: Use existing endpoint with <code>{ "completed": true }</code> (completion is just state)</li>
+<li><strong>Option B</strong>: Add <code>POST /v1/tasks/{taskId}/complete</code> (completion is an explicit action with side effects like setting <code>completedAt</code>)</li>
+</ul>
+<p>Both are valid. The choice depends on your API philosophy and existing patterns.</p>
+<h3>Without scopes</h3>
+<p>Prompt: "Add the ability to mark tasks as complete"</p>
+<p>Agent decides to add a new endpoint because "it's more RESTful". Creates <code>POST /v1/tasks/{taskId}/complete</code>. Adds route definitions, OpenAPI docs, controller logic. Updates client SDK to include the new endpoint. Implements similar endpoints for archive, snooze, and pin "for consistency".</p>
+<p>You return to find four new action endpoints when a simple field update would have worked.</p>
+<h3>With scopes</h3>
+<p>Prompt: "Add the ability to mark tasks as complete. Granted: <code>edit:endpoint</code>. Denied: <code>add:endpoint</code>, <code>add:api-client</code>"</p>
+<p>Agent can modify existing endpoint logic but cannot create new endpoints or API client methods. Adds <code>completed</code> field handling to existing <code>PATCH /v1/tasks/{taskId}</code>.</p>
+<p>You return to find exactly what you expected: one field added to the existing endpoint.</p>
+<p>The scope constraint guided the agent towards the simpler solution and prevented architectural decisions you didn't authorise.</p>
+<h2>Surfacing hidden complexity</h2>
+<p>Now consider a scenario where complexity isn't a design choice but genuinely hidden: adding dark mode to an existing web application. Seems straightforward — just swap some colour variables, right?</p>
+<p>Prompt: "Add dark mode to the application. Granted: <code>edit:component</code>, <code>add:store</code>. Denied: <code>add:asset</code>, <code>edit:asset</code>"</p>
+<p>Agent implements CSS variable system for colours. Creates state store for theme management with localStorage and system preference detection. Updates component styles successfully.</p>
+<p>Then hits a constraint:</p>
+<blockquote>
+<p>I've implemented core dark mode theming with a toggle and persistent state. However, I found issues I cannot fix with current scopes:</p>
+<ul>
+<li>Logo and icons need dark variants (requires <code>add:asset</code> or <code>edit:asset</code>)</li>
+<li>Several images have white backgrounds that clash with dark mode (requires <code>add:asset</code> for alternatives)</li>
+<li>Chart library colours are hardcoded and need configuration (might need <code>add:component</code> for wrapper)</li>
+</ul>
+<p>Should I request additional scopes, or would you prefer to handle these separately?</p>
+</blockquote>
+<p>You can now decide whether to expand the scope, phase the rollout, or keep dark mode as a CSS-only feature initially.</p>
+<p>In this scenario, scopes would have surfaced the hidden complexity early — that you can't actually add dark mode without touching assets and hardcoded values. Whether that's a feature or a bug depends on your context. But at least you'd know what you're signing up for before the work sprawls.</p>
+<h2>A scope taxonomy</h2>
+<p>Examples of what scopes might look like across different layers:</p>
+<p><em>API Layer</em></p>
+<ul>
+<li><code>add:endpoint</code> - Create new API endpoints</li>
+<li><code>edit:endpoint</code> - Modify existing endpoint logic</li>
+<li><code>remove:endpoint</code> - Delete API endpoints</li>
+</ul>
+<p><em>Service Layer</em></p>
+<ul>
+<li><code>add:service</code> - Create new service classes or business logic</li>
+<li><code>edit:service</code> - Modify service methods and logic</li>
+<li><code>remove:service</code> - Remove unused services</li>
+</ul>
+<p><em>Database Layer</em></p>
+<ul>
+<li><code>add:migration</code> - Create new database migrations</li>
+<li><code>edit:migration</code> - Modify pending migrations</li>
+<li><code>remove:migration</code> - Remove pending migrations</li>
+</ul>
+<p><em>Routing</em></p>
+<ul>
+<li><code>add:route</code> - Add new application routes</li>
+<li><code>edit:route</code> - Modify route paths, guards, or metadata</li>
+<li><code>remove:route</code> - Remove routes from the application</li>
+</ul>
+<p><em>Components</em></p>
+<ul>
+<li><code>add:component</code> - Create new UI components</li>
+<li><code>edit:component</code> - Modify component logic and styling</li>
+<li><code>remove:component</code> - Delete unused components</li>
+</ul>
+<p><em>State Management</em></p>
+<ul>
+<li><code>add:store</code> - Create new state stores or slices</li>
+<li><code>edit:store</code> - Modify state logic, actions, or selectors</li>
+<li><code>remove:store</code> - Remove unused state management code</li>
+</ul>
+<p><em>Assets</em></p>
+<ul>
+<li><code>add:asset</code> - Add new static assets</li>
+<li><code>edit:asset</code> - Replace or optimise existing assets</li>
+<li><code>remove:asset</code> - Remove unused assets</li>
+</ul>
+<p>These are generic examples. In practice, we might augment these with custom scopes tailored to a project's architecture — <code>edit:payment-service</code>, <code>add:notification-template</code>, <code>edit:analytics-event</code> — whatever reflects your core components and boundaries.</p>
+<h2>How this differs from OAuth</h2>
+<p>With OAuth scopes, absence implies denial. Authorisation checks look for the presence of a scope.</p>
+<p>With agent scopes, you have two options: explicitly grant or deny each permission upfront, or establish a contract where unmentioned scopes are implicitly denied. The latter initially sounds cleaner — define which scopes are granted, everything else is off limits. You need a clear definition of what each scope means, along with the complete scope taxonomy for the project — This could be included as part of an agent skill or project-level configuration. But agents will likely handle explicit denial better in practice — a clear "you cannot do X" in the prompt will like result in a better adherence to the concept.</p>
+<h2>Syntactic sugar with purpose</h2>
+<p>Agent scopes are really just syntactic sugar for checkboxes that ultimately end up in the prompt. Nothing technically prevents an agent from ignoring them. But they serve a purpose beyond enforcement: they act as a reminder to provide scoping in your initial prompt. A structured way to think about boundaries before you hit "run".</p>
+<h2>Beyond the prompt</h2>
+<p>Scopes could serve purposes beyond just constraining the agent itself. Merge requests could be checked against the declared scopes — did the agent stay within bounds? Scope violations could flag commits for prioritised human review. As the volume of AI-assisted code changes accelerates, we'll need triage mechanisms. Scope adherence is a natural filter: changes within declared bounds might bypass review queues, while scope violations trigger immediate attention.</p>
+<h3>Cost control</h3>
+<p>Scopes could impact the economics of AI-assisted development. Limiting scopes might reduce token usage by preventing agents from wandering into unnecessary context. Smaller scope could mean smaller search space, which could lead to more efficient execution. An agent constrained to <code>edit:component</code> might not need to load and reason about database schemas, API contracts, or migration files.</p>
+<h3>Increased autonomy</h3>
+<p>When you trust that an agent will stay within defined boundaries, you could grant it more autonomy. You might be more likely to let an agent run unsupervised overnight if you know it's constrained to <code>edit:tests</code> and <code>edit:component</code> rather than having free rein across the entire codebase. The paradox could be that more constraints enable more freedom.</p>
+<h3>Forcing incremental change</h3>
+<p>Scopes could force agents to be efficient with their changes rather than continuously reinventing large parts of the codebase. Without constraints, agents often lean towards ground-up rewrites — it's easier to build from scratch than to understand and modify existing patterns. By enforcing surgical, scoped changes, you might push the agent to work incrementally, to understand what's already there, and to make minimal modifications.</p>
+<h3>Better brownfield development</h3>
+<p>This constraint-driven approach might actually make AI more effective in brownfield projects. Without constraints, agents often default to rewriting large sections of well-proven codebases  By limiting scope to specific capabilities like <code>edit:component</code> or <code>add:endpoint</code>, you force the agent to work within the established architecture rather than replacing it. The agent must learn to make surgical changes that fit the existing system instead of reimagining entire subsystems from scratch.</p>
+<p>The result could be code that evolves deliberately rather than exploding unpredictably.</p>
+<p>This is just an idea — one I'm still experimenting with and refining. But I think we're going to need something like it as we grant agents more autonomy. Scopes might not be perfect. But they might be better than the alternative: sending agents out with no guardrails and hoping they do what you had initially pictured.</p>0:{"buildId":"12N1GHvO80J3vTR2GIDYa","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Agent Scopes - Keeping AI Solutions Right-Sized"}],["$","p",null,{"className":"text-sm text-gray-500 dark:text-gray-400","children":"2026-03-09"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai"}],["$","span","agents",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"agents"}],["$","span","scope-management",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"scope-management"}],["$","span","development-workflow",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"development-workflow"}],["$","span","constraints",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"constraints"}]]}]]}],["$","div",null,{"className":"w-full aspect-[3/1] relative rounded-lg overflow-hidden mb-8","children":[["$","$L2",null,{"src":"/posts/agent-scopes-keeping-ai-solutions-right-sized.png","alt":"Agent Scopes - Keeping AI Solutions Right-Sized","fill":true,"className":"object-cover dark:hidden"}],["$","$L2",null,{"src":"/posts/agent-scopes-keeping-ai-solutions-right-sized.dark.png","alt":"Agent Scopes - Keeping AI Solutions Right-Sized","fill":true,"className":"object-cover hidden dark:block"}]]}],["$","div",null,{"className":"prose prose-gray dark:prose-invert max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$3"}}]]}],null,"$L4"]}],"loading":null,"isPartial":false}
+4:["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]
+7:null
