@@ -1,0 +1,74 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:T2473,<p>Most skills I see are a single markdown file with everything dumped into it. Instructions, examples, edge cases, all of it — one long scroll of text that the agent loads every time the skill triggers.</p>
+<p>That works. Mostly. But it's not how skills are supposed to work, and over time the cracks start to show. The skill gets slower as the context balloons. Updating it means wading through a monolith to find the one paragraph that needs changing. And the agent loads instructions for six scenarios when the current task only needs one.</p>
+<h2>What a skill actually is</h2>
+<p>A skill isn't just a markdown file. It's a directory.</p>
+<pre><code class="hljs language-arduino">my-skill/
+├── SKILL.md          ← the entry point
+├── references/
+│   ├── reference-a.md
+│   └── reference-b.md
+├── scripts/
+│   └── script.py
+└── assets/
+    └── <span class="hljs-keyword">template</span>.docx
+</code></pre>
+<p>The <code>SKILL.md</code> is the tip of the iceberg. It contains a name, a description, and enough instructions to get started. The real depth lives in the files alongside it.</p>
+<p>Anthropic calls this <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">progressive disclosure</a>. Like a well-organised manual — table of contents first, then specific chapters, then appendices — skills let the agent load information only as it's needed.</p>
+<h2>Three levels of detail</h2>
+<p>The design is deliberately layered:</p>
+<p><strong>Level 1: Metadata</strong> — just the <code>name</code> and <code>description</code> from the YAML frontmatter. This is always in context, always loaded. Every skill you have installed sits here. It's how the agent decides whether a skill is relevant at all. Keep it tight.</p>
+<p><strong>Level 2: The SKILL.md body</strong> — when the agent decides the skill is relevant, it reads the full SKILL.md. This is the main body of instructions. Aim for under 500 lines. If you're approaching that limit, it's a sign you need the third level.</p>
+<p><strong>Level 3: Bundled files</strong> — reference documents, scripts, assets. The agent only reads these when it decides it needs them. You point to them from SKILL.md and explain when to reach for them.</p>
+<p>A skill that keeps the <code>SKILL.md</code> lean and routes detail into references will perform better than one that front-loads everything. The agent isn't overwhelmed on entry, and it discovers specifics only when the task actually demands them.</p>
+<h2>How it actually works under the hood</h2>
+<p>It helps to understand the mechanism, because it makes the whole design click.</p>
+<p>All installed skill metadata — every <code>name</code> and <code>description</code> across every skill you have — is baked into the agent's initial system prompt. The agent starts every session already aware of what skills exist. That's level 1, and it's always there.</p>
+<p>When the agent decides a skill is relevant — based on matching the task at hand against those descriptions — it calls a tool, essentially <code>get_skill("skill-name")</code>, which returns the contents of <code>SKILL.md</code>. That's level 2, loaded on demand.</p>
+<p>From there, the agent is on its own. If SKILL.md says "read <code>references/aws.md</code> when deploying to AWS", the agent uses its built-in file reading to go and fetch it. If it says "run <code>scripts/package.py</code>", the agent executes it directly. Those files are never loaded unless the agent decides it needs them.</p>
+<p>So the layering isn't just a design philosophy — it's the literal call sequence. Level 1 is in the prompt. Level 2 is a tool call. Level 3 is whatever the agent chooses to reach for next. The directory structure <em>is</em> the API.</p>
+<h2>The context window problem</h2>
+<p>Here's the thing about dumping everything into a single file: context is expensive.</p>
+<p>Every token loaded into context costs money and competes with the actual task. A bloated skill that loads detailed instructions for six different scenarios — when the current task only needs one of them — is burning tokens on things that don't matter.</p>
+<p>This is the same problem I wrote about with <a href="https://almcc.me/blog/2026/01/26/mcp-tools-vs-skills-with-scripts-why-simpler-might-be-better">MCP versus CLI tools</a>. MCP loads complete JSON schemas for every tool at session start. CLI tools let the agent discover capabilities on-demand via <code>--help</code>. The pattern is identical: progressive disclosure dramatically reduces the context footprint.</p>
+<p>A well-structured skill is the same idea applied to instructions.</p>
+<h2>What goes where</h2>
+<p>Some practical guidance:</p>
+<p><strong>In SKILL.md</strong> — the workflow, the decision points, and clear pointers to references. "When doing X, read <code>references/x.md</code>. When doing Y, use <code>scripts/extract.py</code>." The agent should be able to orient itself from SKILL.md alone, then reach for detail as needed.</p>
+<p><strong>In references/</strong> — domain-specific content that only applies sometimes. Different output formats. Platform-specific instructions. Things that are mutually exclusive — if you're deploying to AWS you don't need the GCP reference loaded.</p>
+<p><strong>In scripts/</strong> — code the agent can execute without reading into context. Parsing, extraction, transformation — anything deterministic. Code is more reliable than asking the agent to reason through it, and running a script doesn't cost context.</p>
+<p><strong>In assets/</strong> — templates, icons, example files. Things the agent produces output from.</p>
+<h2>A real example</h2>
+<p>Anthropic's own <a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator">skill-creator skill</a> — the skill for building skills — is the clearest example of this in the wild:</p>
+<pre><code class="hljs language-perl">skill-creator/
+├── SKILL.md               ← workflow overview, under <span class="hljs-number">500</span> lines
+├── agents/
+│   ├── grader.md          ← <span class="hljs-keyword">read</span> only <span class="hljs-keyword">when</span> spawning a grader subagent
+│   ├── comparator.md      ← <span class="hljs-keyword">read</span> only <span class="hljs-keyword">for</span> blind A/B comparisons
+│   └── analyzer.md        ← <span class="hljs-keyword">read</span> only <span class="hljs-keyword">when</span> analysing benchmark results
+├── assets/
+│   └── eval_review.html   ← HTML template, used <span class="hljs-keyword">not</span> <span class="hljs-keyword">read</span> into context
+├── <span class="hljs-keyword">eval</span>-viewer/
+│   └── generate_review.py ← executed directly, never <span class="hljs-keyword">read</span>
+├── references/
+│   └── schemas.md         ← <span class="hljs-keyword">read</span> only <span class="hljs-keyword">when</span> writing evals JSON
+└── scripts/
+    ├── aggregate_benchmark.py
+    ├── run_loop.py
+    └── package_skill.py   ← all executed directly, never <span class="hljs-keyword">read</span>
+</code></pre>
+<p>The SKILL.md covers the core loop — draft, test, evaluate, iterate — and at each decision point tells the agent exactly which file to reach for next. Need to grade outputs? Read <code>agents/grader.md</code>. Need the eval JSON schema? Read <code>references/schemas.md</code>. Need to package the finished skill? Run <code>scripts/package_skill.py</code>.</p>
+<p>None of those files are in context until that moment in the workflow. If you're just drafting a skill, you're not paying for the grader instructions or the benchmark schemas. They don't exist as far as the agent is concerned — until they do.</p>
+<p>There's also a pleasing meta quality to it. This is a skill for building skills. It is itself a well-structured skill. The authors ate their own cooking.</p>
+<h2>The common mistake</h2>
+<p>The instinct when writing a skill is to ask "what does the agent need to know?" and then write it all down. That's a good start, but the second question — "when does it need to know each thing?" — is where most skills fall short.</p>
+<p>The answer to that second question is your directory structure. It's your table of references. It's the decision logic in SKILL.md that routes the agent to the right file.</p>
+<p>Anthropic's own documentation describes skills as being like an onboarding guide for a new hire. A good onboarding guide doesn't hand you everything on day one. It tells you where things are, introduces you to the most important bits, and points you to the right resources when you need more.</p>
+<p>Skills work the same way. The <code>SKILL.md</code> is the orientation. The rest of the directory is the resource library.</p>
+<h2>Worth the structure</h2>
+<p>Setting up a skill directory properly takes a bit more thought than writing a single file. But that structure pays off. Skills that follow progressive disclosure are faster, cheaper to run, and easier to maintain. When something needs updating, you change the relevant reference file, not a monolith.</p>
+<p>The file is just the entry point. The skill is the whole directory.</p>0:{"buildId":"KpSVPUHRthR1CMdYzBpOP","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"A Skill Is a Directory, Not a File"}],["$","p",null,{"className":"text-sm text-gray-500 dark:text-gray-400","children":"2026-03-23"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai"}],["$","span","skills",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"skills"}],["$","span","agents",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"agents"}],["$","span","knowledge-management",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"knowledge-management"}],["$","span","architecture",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"architecture"}]]}]]}],false,["$","div",null,{"className":"prose prose-gray dark:prose-invert max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null
