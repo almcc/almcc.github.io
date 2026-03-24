@@ -8,7 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 export const metadata: Metadata = {
   title: {
     template: "%s | almcc.me",
-    default: "Father, Husband and Software Engineer.",
+    default: "almcc.me",
   },
   description: "Personal site of Alastair McClelland",
   metadataBase: new URL("https://almcc.me"),
