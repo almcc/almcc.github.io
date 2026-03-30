@@ -1,0 +1,28 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:Tf0f,<p>If you're like me, you want to understand how something works before you commit to a workflow built around it. This is how you get under the skin of AI agents — and a natural stepping stone to spec-driven development.</p>
+<h2>The default approach</h2>
+<p>When a new problem appears, the instinct is to open a chat with your agent and describe what you want built. It feels natural. You have a goal, the agent can code — so you describe the goal and wait.</p>
+<p>And something comes back. Often quickly. Often plausible-looking.</p>
+<p>But if you haven't thought the problem through yet, neither has the agent. It fills gaps with assumptions. You end up debugging generated code instead of refining a clear idea.</p>
+<h2>How you'd walk a child through a problem</h2>
+<p>Think about how you'd guide a child to an answer — not by giving them the answer, but by asking questions that lead them there. <em>What do you notice? What does that tell you? What would happen if…?</em></p>
+<p>You're not dictating. You're steering the reasoning, one step at a time.</p>
+<p>Agents respond to exactly this kind of approach. Instead of opening with "build me X", you open with a conversation. Point the agent at the codebase. Ask it to look at how an existing feature works. Then introduce the new requirement: <em>if we added this, what would need to change?</em></p>
+<p>From there, you push. <em>Did you consider this edge case? Why is that approach a good idea? What are the risks?</em> You're not just gathering information — you're stress-testing the thinking before any code exists to debug.</p>
+<p>This is pair programming. You and the agent, working through the problem together, each catching what the other misses.</p>
+<h2>Ask first, then ask again</h2>
+<p>This isn't a single clarifying question at the start. It's a back-and-forth — a joint exploration.</p>
+<p>Walk the agent through the problem in stages. Confirm understanding at each step before moving on. Let it propose directions, push back on them, or ask it to consider alternatives. You're thinking alongside it, not just issuing instructions.</p>
+<p>This is especially well-suited to the early exploratory phase of a project — when you're feeling your way through something new rather than executing against a plan. The agent becomes a thinking partner, helping you understand the problem as much as solve it.</p>
+<p>One thing to watch for: agents are enthusiastic. Left unchecked, a conversation that started focused can drift — more edge cases, more features, more scope than you asked for. When you feel that happening, that's your cue to pull back. Your role in this pairing is to keep things on track. Guide it, focus it, and know when to stop exploring and start building.</p>
+<h2>Where this fits on the map</h2>
+<p>This approach is a foundation. It teaches you how agents reason, where they make assumptions, and how to steer them effectively. Spend time here. Get comfortable with the back-and-forth.</p>
+<p>When that feels natural — when you're consistently arriving at good implementations through joint exploration — you're ready for the next level: spec-driven development. That's a more structured approach where a written spec drives the agent's behaviour, giving you repeatability and control at scale.</p>
+<p>The instincts you build here — asking before building, steering rather than dictating, catching assumptions early — are what make spec-driven development click. Once you understand how the agent thinks, working within a spec feels intuitive rather than prescriptive.</p>
+<h2>One habit, a solid foundation</h2>
+<p>You're not changing everything about how you work with agents. You're adding one step at the front: pause, ask, understand.</p>
+<p>The code that comes out is better. More importantly, so is your understanding of how it got there.</p>0:{"buildId":"PFl8smTcYPEBFOVslWfOM","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Pair Programming with AI Agents"}],["$","p",null,{"className":"text-sm text-gray-500 dark:text-gray-400","children":"2026-03-30"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai"}],["$","span","ai-agents",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai-agents"}],["$","span","workflow",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"workflow"}],["$","span","prompting",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"prompting"}],["$","span","software-development",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"software-development"}]]}]]}],false,["$","div",null,{"className":"prose prose-gray dark:prose-invert max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null
