@@ -1,0 +1,29 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+2:Tf6e,<p>If you were an early adopter of LLMs and AI agents, there's a good chance you picked up a habit that's now quietly holding you back: telling the agent <em>how</em> to do something instead of <em>what</em> you need done. It felt like precision. It's become a ceiling.</p>
+<h2>The old way made sense at the time</h2>
+<p>When the first generation of coding assistants appeared, you had to be precise. Do this. Then do that. Check this condition. Handle that case. The model wasn't reasoning — it was pattern-matching. So you laid out a plan, because a plan was all it could follow.</p>
+<p>That shaped how a lot of us learnt to prompt. Specific. Prescriptive. A series of instructions the model could execute like a script.</p>
+<p>The irony is that the people most likely to be doing this are the ones who got in early — who were already using agents when everyone else was still sceptical. And a year later, that habit is holding them back. It's also a little strange to call this the "old way" at all. We're talking about instincts formed twelve months ago. That's how fast things have moved.</p>
+<p>It made sense then. It's a liability now.</p>
+<h2>Prescriptive prompting is a ceiling</h2>
+<p>When you write a prompt that says "first do X, then do Y, then check Z", you've already decided the solution. You've constrained the agent to your own mental model of the problem. And your mental model might be wrong, or just not the best one.</p>
+<p>The agent can't find a better path if you've already paved the road.</p>
+<p>I've caught myself doing this — writing elaborate step-by-step prompts, then being mildly annoyed when the output was only as good as my instructions. Of course it was. I'd removed the agent's ability to improve on them.</p>
+<h2>Goal-based prompting gets out of the way</h2>
+<p>The alternative is to describe the outcome. Not the steps — the end state. What does "done" look like? What are the constraints? What does failure look like? Then let the agent figure out the route.</p>
+<p>This is a meaningful shift. It moves you from directing the agent to briefing it. And agents — the modern ones with genuine planning and reasoning capabilities — respond to that differently. They explore. They backtrack. They find approaches you wouldn't have thought to specify.</p>
+<p>Your job becomes defining the goal clearly, not solving the problem in advance.</p>
+<h2>It holds up better as models change</h2>
+<p>There's a practical side to this beyond quality of output. Prescriptive prompts are brittle. They're written for a specific model's behaviour at a specific point in time. When the model changes — and they change constantly — the prompt often breaks in subtle ways, because it was tuned to a particular set of quirks.</p>
+<p>Goal-based prompts are more durable. The goal doesn't change when the model does. You describe what success looks like, and each new model version can find its own way there.</p>
+<h2>Multiple agents, one problem</h2>
+<p>There's another thing goal-based prompting enables that prescriptive approaches can't: running multiple agents on the same problem and getting something useful from each.</p>
+<p>If you've hardcoded the steps, every agent produces the same output. But if you've described a goal, different agents — or the same agent with different context — can take different paths, apply different priorities, surface different trade-offs. You can then compare, combine, or use the outputs to stress-test each other.</p>
+<p>That's actually useful. Prescriptive prompting collapses that possibility before it begins.</p>
+<h2>The shift is small but the effect compounds</h2>
+<p>You don't need to throw away everything you've written. But the next time you sit down to brief an agent, try holding back the <em>how</em>. Describe the outcome. Set the constraints. Trust the agent to find the path.</p>
+<p>More often than not, it'll find one you wouldn't have written yourself.</p>0:{"buildId":"UBfxfTzoSoJg5QnFu3UJP","rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold mb-2","children":"Stop Telling Agents What to Do. Tell Them What You Want."}],["$","p",null,{"className":"text-sm text-gray-500 dark:text-gray-400","children":"2026-04-13"}],["$","div",null,{"className":"flex gap-2 mt-3","children":[["$","span","ai",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai"}],["$","span","ai-agents",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"ai-agents"}],["$","span","prompting",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"prompting"}],["$","span","goal-based",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"goal-based"}],["$","span","software-development",{"className":"text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded","children":"software-development"}]]}]]}],false,["$","div",null,{"className":"prose prose-gray dark:prose-invert max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-pre:rounded-md","dangerouslySetInnerHTML":{"__html":"$2"}}]]}],null,"$L3"]}],"loading":null,"isPartial":false}
+3:["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]
+6:null
