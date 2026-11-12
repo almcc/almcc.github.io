@@ -6,7 +6,7 @@ import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 
-const BLOG_DIR = path.join(process.env.HOME!, "Notes/Blog");
+const BLOG_DIR = path.join(process.env.HOME!, "Notes/Wiki/Personal/Blog");
 
 export interface BlogFrontmatter {
   title: string;
